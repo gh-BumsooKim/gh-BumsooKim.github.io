@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Bumsoo (Ben) Kim</title>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script async="" src="analytics.js"></script> -->
+<script src="asset/css/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<!-- <script src="https://ajax.googleapis.com"></script> -->
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="asset/css/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="asset/css/bootstrap.min.css" crossorigin="anonymous">
+
+<!-- font -->
+<link href="https://fonts.googleapis.com" rel="stylesheet">
+
+<!-- Sortable, filterable, searchable tables -->
+<!-- 
+<script src="js/list.min.js"></script>
+<script src="js/tables.js"></script>
+-->
+
+
+<!-- Icon glyphs
+<script src="https://kit.fontawesome.com/2dcd817bd1.js" crossorigin="anonymous"></script>
+ -->
+
+<!-- CodyHouse stuff
+<script src="js/modernizr.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/main.js"></script>
+ -->
+
+<!-- Fluid stuff
+<script src="js/fluid.js"></script>
+ -->
+
+<!-- CodyHouse stuff
+<link rel="stylesheet" href="css/cd.css">
+-->
+
+<!-- Bootstrap
+<link href="css/bootstrap.min.css" rel="stylesheet">
+-->
+
+<!-- Fonts
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link href="css/fonts.css" rel="stylesheet">
+-->
+
+<!-- My own styles
+<link href="css/style.css" rel="stylesheet">
+-->
+
+<script>
+// Random image from a directory for my bust
+function bustImage()
+{
+    
+    var filenames = [
+    {"name":"temp1.png","collection":null,"path":"asset/images/neurips2023.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true},
+    {"name":"temp1.png","collection":null,"path":"asset/images/cvpr2024.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true},
+    {"name":"temp1.png","collection":null,"path":"asset/images/aaai2025.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true},
+    {"name":"temp1.png","collection":null,"path":"asset/images/wacv2025.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true},
+    {"name":"temp1.png","collection":null,"path":"asset/images/ismar2025.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true},
+    {"name":"temp1.png","collection":null,"path":"asset/images/sigasia2025.jpg","basename":" ","extname":".jpg","modified_time":"2026-03-28 22:49:05 +0000","image":true,"photos_JT":true}
+    ];
+    var r = Math.floor( Math.random() * filenames.length );
+    
+    //document.getElementById("bustImage").src = filenames[r].path;
+    
+    document.write("<img width='210px' src=" + filenames[r].path + " alt='Which Ben will greet you next?!'" );
+}
+
+// Minor page scraping fight
+function hiddenEmail(d,u,t)
+{
+    var email = u + "@" + d;
+    if (t)
+        document.write("<a href=mailto:"+email+">"+t+"</a>");
+    else
+        document.write("<a href=mailto:"+email+">"+email+"</a>");
+}
+
+fetch('citations.json')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('citation-count').innerText = "Citations:" + data.citations;
+    })
+.catch(err => console.error('citation error:', err));
+
+
+// JT Hack
+// Some of our tabs are not resetting their class="active" status when we switch between.
+// So, let's fix it by resetting all links within the panel.
+// https://github.com/twbs/bootstrap/issues/19374
+// Thanks to fayazrehmani
+//
+$(document).ready(function(){
+    $('#pubcontrols a').on('click', function(e) 
+    {
+        e.preventDefault();
+        $(this).tab('show');
+        var theThis = $(this);
+        $('#pubcontrols a').removeClass('active');
+        theThis.addClass('active');
+    });
+});
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6NJR6LK7JJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6NJR6LK7JJ');
+</script>
+	
+	<!-- Include this last; this is our style sheet -->
+	<link rel="stylesheet" href="asset/css/style.css">	
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="asset/css/m=el_main_css"></head>
+
+<body>
+    <div class="wrapper">
+      <!-- This is not the HTML header; more a sidebar -->
+      <header>
+        <div class="sidebarVertical">
+
+  <div class="detailsContainer">
+    <!-- Title -->
+<h1 class="h1name">Bumsoo Kim</h1>
+<h3>AI + Graphics Researcher</h3>
+<!-- Photo -->
+<script>bustImage()</script><img width="210px" src="asset/images/cvpr2024.jpg" alt="Which Ben will greet you next?!" <!--="" lab="" affiliation="" --="">
+
+
+<!-- GITHUB -->
+<!-- <img src="./assets/img/github-mark.svg" height="15em">&nbsp; -->
+<!-- <script async="" defer="" id="github-bjs" src="asset/css/buttons.js"></script> -->
+
+<p>Love collaborating at the intersection of art + tech!</p>
+  </div>
+  <div class="contactdetailsContainer">
+    <h3>Contact</h3>
+<!-- EMAIL -->
+<script type="text/javascript">hiddenEmail("gmail.com","bumsookim00")</script><a href="mailto:bumsookim00@gmail.com"></a><noscript>Enable Javascript to see my email address</noscript><br>
+
+<!-- BlueSky -->
+<!-- <img class="logoShift" src="Bluesky_Logo.svg" width="15em">&nbsp;<a href="https://bsky.app/profile/bumsookim.bsky.social">BlueSky @bumsookim.bsky.social</a><br> -->
+
+<!-- Mastodon
+<a rel="me" href="https://fediscience.org/@bumsookim">Mastodon</a><br>
+-->
+
+<!-- Google Scholar -->
+<a href="https://scholar.google.com/citations?user=JlNb4R8AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a><br>
+<a>
+    <div id="citation-count">Loading...</div>
+</a>
+
+<br>
+
+<!-- OFFICE HOURS -->
+Local Time (GMT+09:00)<br>
+<!-- <a href="https://calendar.app.google/QwmhWRuxVnJsHrYR9">Book appointment</a><br> -->
+<a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1zvTG45bxHUxQ3JujrVBNLDYKZcYl6N22Bi9xqUkeQY8nOk8XJ-u7jucFpuxkZdYyJKZW44Qai">Book appointment</a><br>
+
+
+<p>	
+    <!-- PHYSICAL ADDRESS -->
+    <!-- <br> -->
+    Republic of Korea<br>
+</p>
+
+<h6>(2026 - Now) Vision AI Research Intern at</h6>
+<div class="afflogo">
+    <a href="https://www.smilegate.com/en/"><img src="https://www.smilegate.com/assets/img/company/about/logo_smilegate_en.png"></a>
+</div>
+  </div>
+
+</div>
+
+<div class="sidebarTiny">
+  <table class="sidebarTable container">
+    <tbody>
+      <tr>
+        <td class="sidebarTD">
+          <div class="detailsContainer">
+            <!-- Title -->
+<!-- Photo -->
+<script>bustImage()</script><img width="210px" src="asset/images/cvpr2024.jpg" alt="Which Ben will greet you next?!" <!--="" lab="" affiliation="" --="">
+<!-- <h3><a href="https://visual.cs/">Visual Computing</a></h3> -->
+
+
+<!-- GITHUB -->
+<!-- <img src="./assets/img/github-mark.svg" height="15em">&nbsp; -->
+<!-- <script async="" defer="" id="github-bjs" src="asset/css/buttons.js"></script> -->
+
+<p>Love collaborating at the intersection of art + tech!</p>
+  </div>
+  <div class="contactdetailsContainer">
+    <h3>Contact</h3>
+<!-- EMAIL -->
+<script type="text/javascript">hiddenEmail("gmail.com","bumsookim00")</script><a href="mailto:bumsookim00@gmail.com"></a><noscript>Enable Javascript to see my email address</noscript><br>
+
+<!-- BlueSky -->
+<!-- <img class="logoShift" src="Bluesky_Logo.svg" width="15em">&nbsp;<a href="https://bsky.app/profile/bumsookim.bsky.social">BlueSky @bumsookim.bsky.social</a><br> -->
+
+<!-- Mastodon
+<a rel="me" href="https://fediscience.org/@bumsookim">Mastodon</a><br>
+-->
+
+<!-- Google Scholar -->
+<a href="https://scholar.google.com/citations?user=JlNb4R8AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a><br>
+<a>
+    <div id="citation-count">Loading...</div>
+</a>
+
+<br>
+
+<!-- OFFICE HOURS -->
+Local Time (GMT+09:00)<br>
+<!-- <a href="https://calendar.app.google/QwmhWRuxVnJsHrYR9">Book appointment</a><br> -->
+<a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1zvTG45bxHUxQ3JujrVBNLDYKZcYl6N22Bi9xqUkeQY8nOk8XJ-u7jucFpuxkZdYyJKZW44Qai">Book appointment</a><br>
+
+
+<p>	
+    <!-- PHYSICAL ADDRESS -->
+    <!-- <br> -->
+    Republic of Korea<br>
+</p>
+
+<h6>(2026 - Now) Vision AI Research Intern at</h6>
+<div class="afflogo">
+    <a href="https://www.smilegate.com/en/"><img src="https://www.smilegate.com/assets/img/company/about/logo_smilegate_en.png"></a>
+</div>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+      </header>
+
+<!-- Top - Central content -->
+<section>
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#research"><p class="h1tab">Research</p></a></li>
+        <!-- <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#teaching"><p class="h1tab">Teaching</p></a></li> -->
+        <!-- <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#lab"><p class="h1tab">Lab</p></a></li> -->
+        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#me"><p class="h1tab">Me</p></a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#artwork"><p class="h1tab">Artwork</p></a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#implementation"><p class="h1tab">Code</p></a></li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Top - Research -->
+        <div id="research" class="tab-pane container active">
+            <p class="blurbtext"><em>I'm actively seeking a research scientist position for alternative military service! for Fall 2026</em></p>
+    
+            <p class="blurbtext">
+            I am a ML-aided visual computing researcher&mdash;computer vision, computer graphics, and generative AI. My academic footprints cross 2D/3D editing, multimodal generation, and neural rendering system for entertainment fields.
+            </p>
+            <br>
+        
+            <div id="research-section" class="mainitem">
+                <!-- Area selection tabs -->
+                <div id="pubcontrols">
+                <ul class="pubcontrolsul">
+                    <li>
+                    <ul class="nav nav-pills nav-justified nav-fill">
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabselected"><p class="pubtab h3tab">Selected Publications</p></a></li>
+                        <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#pubtabintime"><p class="pubtab h3tab">All (Chronological)</p></a></li></ul>
+                    </li>
+
+                    <li>
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtab3ddata"><p class="pubtab h4tab">3D Data</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabphotos"><p class="pubtab h4tab">Photos</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabartsandgaming"><p class="pubtab h4tab">Arts & Gaming</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabrealworld"><p class="pubtab h4tab">Real-world</p></a></li></ul>
+                    </li>
+
+                    <!-- <li>
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabviewsynthesis"><p class="pubtab ptab">View Synthesis</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabtimeofflight"><p class="pubtab ptab">Time of Flight</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtablightfields"><p class="pubtab ptab">Light Fields</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabxr"><p class="pubtab ptab">XR</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabgenai"><p class="pubtab ptab">GenAI</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabvisualization"><p class="pubtab ptab">Visualization</p></a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pubtabperception"><p class="pubtab ptab">Perception</p></a></li></ul> -->
+                    </li>
+                </ul>
+                </div>
+
+                <!-- Tabs -->
+                <br>
+                <div class="tab-content">
+                    <!-- pubtabselected -->
+                    <div id="pubtabselected" class="tab-pane active show">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        Selected Publications
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/soundsthatshape.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">ICASSP, 2026 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/SoundsThatShape/">Project webpage | </a><a>PDF (Soon)</a></div>
+                                    <div class="pubcode">
+                                        <a target="_target"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/makevlm.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>*, Wonseop Shin*, Kyuchul Lee, Yonghoon Jung, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">WACV, 2025 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/Cartoon-Hallucinations-Detection/">Project webpage | </a><a href="https://openaccess.thecvf.com/content/WACV2025/papers/Kim_Make_VLM_Recognize_Visual_Hallucination_on_Cartoon_Character_Image_with_WACV_2025_paper.pdf">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2403.15048"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                        <a target="_target" href="https://chatgpt.com/g/g-shNHYX7UV-hallucination-detector-correct-or-hallucination"><img src="/asset/images/chatgpt.svg" height="15em">&nbsp;Chatgpt Demo</a>
+                                        <a target="_target" href="https://huggingface.co/datasets/Wseop/PA-ICVL-DataSet"><img src="asset/images/huggingface-logo.svg" height="15em">&nbsp;HuggingFace Dataset</a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/toonaging.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Abdul Muqeet, Kyuchul Lee, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">CVPR <a target="_target" href="https://ai-for-content-creation.github.io/2024/">AI4CC Workshop</a>, 2024 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/ToonAging/">Project webpage | </a><a href="https://arxiv.org/pdf/2402.02733">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/pdf/2402.02733"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/minecraftify.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Minecraft-ify:  Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Byun, Yonghoon Jung, Wonseop Shin, Sareer UI Amin, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">NeurIPS <a target="_target" href="https://neuripscreativityworkshop.github.io/2023/">ML4CD Workshop</a> (Oral), 2023 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/Minecraft-ify/">Project webpage | </a><a href="https://neuripscreativityworkshop.github.io/2023/papers/ml4cd2023_paper02.pdf">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2402.05448"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            </tbody></table>
+                        </div>
+                    <!-- pubtabintime -->
+                    <div id="pubtabintime" class="tab-pane fade">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        All (Chronological)
+                        <table>
+                            <tbody>
+                                <br> TBD
+                            </tbody></table>
+                        </div>
+                    <!-- pubtab3ddata -->
+                    <div id="pubtab3ddata" class="tab-pane fade">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        3D Data
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/taminggaussian.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Taming Gaussian Densification in Score Distillation Sampling for High-Fidelity Text-to-3D Generation</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Junghun Ryu, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">CGI, 2026 (Under review)</div>
+                                    <div class="pubwebpage">
+                                        <a>PDF (Soon)</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/soundsthatshape.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">ICASSP, 2026 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/SoundsThatShape/">Project webpage | </a><a>PDF (Soon)</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/multifloodsynth.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">MultiFloodSynth: Multi-Annotated Flood Synthetic Dataset Generation</div>
+                                    <div class="pubauthors">YoonJe Kang*, Yonghoon Jung*, Wonseop Shin*, <a target="_blank" href="">Bumsoo Kim</a>*, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">AAAI <a target="_target" href="https://sites.google.com/servicenow.com/good-data-2025/program">GoodData Workshop</a> (Oral), 2025 </div>
+                                    <div class="pubwebpage">
+                                        <a href="https://openreview.net/pdf?id=VQayOTsUAt">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2502.03966"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                            </tbody></table>
+                        </div>
+                    <!-- pubtabphotos -->
+                    <div id="pubtabphotos" class="tab-pane fade">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        Photos
+                        <table>
+                            <tbody>
+                                <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/videotimetravel.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">VideoTimeTravel: high-fidelity face re-aging diffusion models for production video</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Yunyoung Nam, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">Visual Computer (IF:2.9), 2026 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/VideoTimeTravel/">Project webpage | </a><a href="https://link.springer.com/article/10.1007/s00371-025-04208-w">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/toonaging.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Abdul Muqeet, Kyuchul Lee, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">CVPR <a target="_target" href="https://ai-for-content-creation.github.io/2024/">AI4CC Workshop</a>, 2024 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/ToonAging/">Project webpage | </a><a href="https://arxiv.org/pdf/2402.02733">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2402.02733"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/vfra.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Video Face Re-Aging: Toward Temporally Consistent Face Re-Aging</div>
+                                    <div class="pubauthors">Abdul Muqeet*, Kyuchul Lee*, <a target="_blank" href="">Bumsoo Kim</a>, Yohan Hong, Hyungrae Lee, Woonggon Kim, KwangHee Lee</div>
+                                    <div class="pubvenueyear">arXiv, 2023 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://video-reaging.github.io/">Project webpage | </a><a href="https://arxiv.org/pdf/2311.11642">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2311.11642"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            </tbody></table>
+                        </div>
+                    <!-- pubtabartsandgaming -->
+                    <div id="pubtabartsandgaming" class="tab-pane fade">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        Arts & Gaming
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/creativeinterpolation.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">How Generative Models Serve as Visual Artists for Creative Interpolation</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Yoonje Kang, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">CVPR Workshop, 2026 (Under review)</div>
+                                    <div class="pubwebpage">
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/msthesis.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Learning Pose‑to‑Semantic for 3D Anamorphic Art based on 2D Diffusion Guidance</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a></div>
+                                    <div class="pubvenueyear">MS Thesis, 2026</div>
+                                    <div class="pubwebpage"></a><a>PDF (Soon)</a></div>
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/makevlm.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>*, Wonseop Shin*, Kyuchul Lee, Yonghoon Jung, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">WACV, 2025 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/Cartoon-Hallucinations-Detection/">Project webpage | </a><a href="https://openaccess.thecvf.com/content/WACV2025/papers/Kim_Make_VLM_Recognize_Visual_Hallucination_on_Cartoon_Character_Image_with_WACV_2025_paper.pdf">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2403.15048"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                        <a target="_target" href="https://chatgpt.com/g/g-shNHYX7UV-hallucination-detector-correct-or-hallucination"><img src="/asset/images/chatgpt.svg" height="12em">&nbsp;Chatgpt Demo</a>
+                                        <a target="_target" href="https://huggingface.co/datasets/Wseop/PA-ICVL-DataSet"><img src="asset/images/huggingface-logo.svg" height="15em">&nbsp;HuggingFace Dataset</a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/styletransfer.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Younghoon Jung, Youngsup Park, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">CMES (Q2), 2024 </div>
+                                    <div class="pubwebpage">
+                                        <a href="https://www.researchgate.net/profile/Bumsoo-Kim-11/publication/385019453_Explicitly_Color-Inspired_Neural_Style_Transfer_Using_Patchified_AdaIN/links/6717cc5fd796f96b8ecc41e7/Explicitly-Color-Inspired-Neural-Style-Transfer-Using-Patchified-AdaIN.pdf">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/minecraftify.png" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Minecraft-ify:  Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Byun, Yonghoon Jung, Wonseop Shin, Sareer UI Amin, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">NeurIPS <a target="_target" href="https://neuripscreativityworkshop.github.io/2023/">ML4CD Workshop</a> (Oral, Top 8.7%), 2023 </div>
+                                    <div class="pubwebpage">
+                                        <a target="_blank" href="https://gh-bumsookim.github.io/Minecraft-ify/">Project webpage | </a><a href="https://neuripscreativityworkshop.github.io/2023/papers/ml4cd2023_paper02.pdf">PDF</a></div>
+                                    <div class="pubcode"></div>
+                                        <a target="_target" href="https://arxiv.org/abs/2402.05448"><img src="asset/images/arxiv-logo.svg" height="15em"></a>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            </tbody></table>
+                        </div>
+                    <!-- pubtabrealworld -->
+                    <div id="pubtabrealworld" class="tab-pane fade">
+                        <!-- Textual description of research area -->
+                        <!-- Image of research area -->
+                        <hr>
+                        Real-world
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/gesture.jpeg" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">EfficientNetV2-based dynamic gesture recognition using transformed scalogram from triaxial acceleration signal</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">JCDE (IF:4.9), 2023</div>
+                                    <div class="pubwebpage">
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                                <tr>
+                                <td class="pubimgmedia">
+                                    <div class="pubimgmedia">
+                                        <img src="asset/images/intelligent.gif" width="120px"></img></div></td>
+                                <td>
+                                    <div class="pubtitle">Intelligent Digital Human Agent Service With Deep Learning Based-Face Recognition</div>
+                                    <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
+                                    <div class="pubvenueyear">IEEE Access (IF:3.9), 2022</div>
+                                    <div class="pubwebpage">
+                                    <div class="pubcode"></div>
+                                    <div class="pubnote"></div>
+                                </td></tr>
+                            </tbody></table>
+                        </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Top - Me -->
+        <div id="me" class="tab-pane container fade">
+                <h4>Biography (2026)</h4>
+        <p>
+        Bumsoo Kim received the BSc and MSc in art and technology from Chung-Ang University, South Korea, in 2023, 2026. He worked for machine learning algorithm and its industrial system at ETRI, VIVE STUDIOS, and Boeing Research & Technology, South Korea. His research areas include generative models on computer graphics.
+        </p>
+
+        <p>Research fields: Multi-modal 2D/3D/Video generation and editing, audio-visual integration, differentiable rendering, and other artistic and gaming tasks.</p>
+
+        <h4>Academic lineage</h4>
+        <div class="studentpub">
+        <ul>
+            <li>(2026) Research intern at AI Center, <a href="https://www.smilegate.com/en/">Smilegate</a>.</li>
+            <li>(2026) MSc at <a href="https://neweng.cau.ac.kr/index.do">Chung-Ang University</a> with <a href="https://grlab.cau.ac.kr/?page_id=10">Sanghyun Seo</a>.</li>
+            <li>(2025) Research intern with <a href="https://scholar.google.com/citations?user=zbJI0jcAAAAJ" target="_blank">Hyeokjoon Kwon</a>, <a href="https://scholar.google.com/citations?user=4tqQiJ8AAAAJ" target="_blank">Hyebin Cho</a>, <a href="https://scholar.google.co.kr/citations?user=Tf2kXrcAAAAJ" target="_blank">Hwiyeon Yoo</a> and <a href="https://scholar.google.com/citations?user=zONHZaUAAAAJ" target="_blank">Junghyun Oh</a> at the <a href="https://www.boeing.com/">Boeing Research and Technology</a>.</li>
+            <li>(2024) Research intern with <a href="https://scholar.google.com/citations?user=-BBpuKMAAAAJ" target="_blank">Abdul Muqeet</a>, <a href="https://scholar.google.com/citations?user=jXiLuh8AAAAJ" target="_blank">Kyuchul Lee</a> and <a href="https://scholar.google.com/citations?user=i79faMoAAAAJ" target="_blank">Kwang Hee Lee</a> at the <a href="https://vivestudios-en.imweb.me/">VIVE STUDIOS</a>.</li>
+            <li>(2023) BSc at <a href="https://neweng.cau.ac.kr/index.do">Chung-Ang University</a> with <a href="https://grlab.cau.ac.kr/?page_id=10">Sanghyun Seo</a>.</li>
+            <li>(2021) Research intern at <a href="https://www.etri.re.kr/eng/main/main.etri">ETRI</a>.</li>
+        </ul>
+        </div>
+        </div>
+        <!-- Top - Artwork -->
+        <div id="artwork" class="tab-pane container fade">
+            <!-- <h4>Real-time | Personal project (2027)</h4>
+            <p>
+                TBD
+            </p>
+            <br> -->
+            <h4>Shadow-Art Object Creation Tool | MS Thesis (2026)</h4>
+            <p>
+                3D generative models. TBD
+            </p>
+            <br>
+            <hr>
+            <h4>Dynamic Projection Mapping | BS Graduation Exhibition (2023)</h4>
+            <img src="asset/images/bsgrad_01.jpg" width="49.5%"></img>
+            <img src="asset/images/bsgrad_02.jpg" width="49.5%"></img>
+            <p>
+                <em>Computer vision technics + RGB-D camera</em><br>
+
+                I developed a vision system that captures movable objects in real-time. To do that, I integrate RGB-D camera and video projector with GPU-accelerated Just-In-Time compiler on python interface. For visual contents, I optimized YOLACT model with arbitrary neural style transfer in edge devices.
+            </p>
+            <br>
+        </div>
+        <!-- Top - Imple -->
+        <div id="implementation" class="tab-pane container fade">
+            <h4>My Official Code Implementation</h4>
+            TBD<hr>
+            <h4>My Unofficial Code Implementation</h4>
+            <p>
+                <a target="_target"><img src="asset/images/github-mark.svg" height="15em">&nbsp;EffectiveResolutionEstimation (2024)</a>
+            </p>
+            <p>
+                <a target="_target" href="https://github.com/gh-BumsooKim/PixelCycleGAN"><img src="asset/images/github-mark.svg" height="15em">&nbsp;PixelCycleGAN (2023)</a>
+            </p>
+            <p>
+                <a target="_target"><img src="asset/images/github-mark.svg" height="15em">&nbsp;CycleGAN (2023)</a>
+            </p><hr>
+            <h4>My Stable Maintenance Version from Official Repo</h4>
+            <p>
+                <a target="_target" href="https://github.com/gh-BumsooKim/FADING_stable"><img src="asset/images/github-mark.svg" height="15em">&nbsp;FADING (2024~)</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer / acknowledgements -->
+<footer>
+    <hr>
+
+    <h4>Acknowledgements</h4>
+                
+    <p>My collaborators and co-authors!</p>
+    <p>Hyebin Cho (KAIST), Luchao Qi (UNC Chapel Hill), YoonJe Kang (Chung-Ang University), Abdul Muqeet (VIVE STUDIOS), Kyuchul Lee (TwelveLabs)</p>
+    </p><p><small>
+        The open source Web com­munity: <a href="https://html5boilerplate.com/">HTML5 Boiler­plate</a>, <a href="http://johnstonianera.com/building-responsive-layouts-redux/">Ryan Johnston</a>, <a href="http://jsfiddle.net/joshnh/Drrkb/">Joshua N. Hibbert</a>, <a href="http://practicaltypography.com/">Practical­Typo­graphy.com</a>, and <a href="http://www.georgduffner.at/ebgaramond/">EB Gara­mond.<br>Hosted on GitHub Pages using Jekyll — basic theme by <a href="https://github.com/orderedlist">orderedlist</a></small>.</p>
+</footer>
+</div>
+</body></html>

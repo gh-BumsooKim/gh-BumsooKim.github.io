@@ -93,6 +93,7 @@ fetch('citations.json')
     .then(response => response.json())
     .then(data => {
         document.getElementById('citation-count').innerText = "Citations:" + data.citations;
+        document.getElementById('citation-count2').innerText = "Citations:" + data.citations;
     })
 .catch(err => console.error('citation error:', err));
 
@@ -222,7 +223,7 @@ Local Time (GMT+09:00)<br>
 <!-- Google Scholar -->
 <a href="https://scholar.google.com/citations?user=JlNb4R8AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a><br>
 <a>
-    <div id="citation-count">Loading...</div>
+    <div id="citation-count2">Loading..</div>
 </a>
 
 <br>

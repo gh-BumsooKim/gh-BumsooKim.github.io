@@ -18,9 +18,8 @@ function bustImage() {
         "asset/images/ismar2025.jpg",
         "asset/images/sigasia2025.jpg"
     ];
-    var r = Math.floor( Math.random() * paths.length );
-    document.write("<img width='210px' src=" + paths[r] + " alt='Which Ben will greet you next?!'" );
-
+    var r = Math.floor(Math.random() * paths.length);
+    document.write("<img width='210px' src='" + paths[r] + "' alt='Which Ben will greet you next?!'>");
 }
 
 function hiddenEmail(d, u, t) {
@@ -103,12 +102,8 @@ $(document).ready(function() {
             rgba(255,255,255,0.5) 50%,
             transparent           62%
         ),
-        linear-gradient(to bottom right, #cfe0ff, #ffffff);
+        linear-gradient(to bottom right, #dbe7fd, #ffffff);
     box-shadow: 0 1px 6px rgba(0,76,151,0.12);
-}
-.pub-card.pub-highlight .pubvenueyear {
-    font-weight: 600;
-    color: #003474;
 }
 </style>
 </head>
@@ -124,7 +119,7 @@ $(document).ready(function() {
 <h1 class="h1name">Bumsoo Kim</h1>
 <h3>AI + Graphics Researcher</h3>
 <!-- Photo -->
-<script>bustImage()</script><img width="210px" src="asset/images/cvpr2024.jpg" alt="Conference photo">
+<script>bustImage()</script>
 
 <p>Love collaborating at the intersection of art + tech!</p>
   </div>
@@ -173,7 +168,7 @@ Local Time (GMT+09:00)<br>
 <h1 class="h1name">Bumsoo Kim</h1>
 <h3>AI + Graphics Researcher</h3>
 <!-- Photo -->
-<img class="bust-image" width="210px" src="asset/images/cvpr2024.jpg" alt="Conference photo">
+<script>bustImage()</script>
 
 
 

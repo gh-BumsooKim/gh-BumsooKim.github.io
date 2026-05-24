@@ -177,31 +177,6 @@ def get_tab_pubs(pubs, tab_key):
 # ---------------------------------------------------------------------------
 # index.html transformations
 # ---------------------------------------------------------------------------
-
-def migrate_tables_to_cards(html):
-    """One-time: replace <table><tbody>…</tbody></table> inside each pub tab div
-    with <div class="pub-list"> + PUB markers. Skips if already migrated."""
-    if "<!-- PUB:selected:START -->" in html:
-        return html  # already migrated
-
-    print("Migrating from table layout to card layout...")
-    for div_id, tab_key in TAB_DIV_IDS.items():
-        pattern = rf'(<div id="{div_id}"[^>]*>.*?)<table[^>]*>\s*<tbody>.*?</tbody>\s*</table>'
-        replacement = (
-            rf'\1<div class="pub-list">\n'
-            f'<!-- PUB:{tab_key}:START -->\n'
-            f'<!-- PUB:{tab_key}:END -->\n'
-            f'</div>'
-        )
-        new_html, count = re.subn(pattern, replacement, html, flags=re.DOTALL)
-        if count == 0:
-            print(f"  WARNING: could not migrate '{div_id}'")
-        else:
-            html = new_html
-            print(f"  Migrated {div_id}")
-    return html
-
-
 def update_tab_content(html, pubs):
     """Replace content between PUB markers for every tab."""
     for div_id, tab_key in TAB_DIV_IDS.items():
@@ -231,7 +206,6 @@ def main():
     with open("index.html", encoding="utf-8") as f:
         html = f.read()
 
-    html = migrate_tables_to_cards(html)
     html = update_tab_content(html, pubs)
 
     with open("index.html", "w", encoding="utf-8") as f:

@@ -1,0 +1,363 @@
+{
+  "publications": [ 
+    {
+      "id": "awesome-3d-motion",
+      "image": null,
+      "title": "Awesome 3D Motion",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["3ddata"]
+    },
+    {
+      "id": "awesome-physical-audio",
+      "image": null,
+      "title": "Awesome Physical Audio",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["sound"]
+    },
+    {
+      "id": "awesome-acoustic-image",
+      "image": null,
+      "title": "Awesome Acoustic-Image",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["sound"]
+    },
+    {
+      "id": "texshadow",
+      "image": "asset/images/texshadow.jpg",
+      "title": "Tex-Shadow: Synthesizing Textured 3D Shadow Art via 3D-Aware Diffusion Prior",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "conference",
+      "venue": "SIGGRAPH Posters",
+      "year": 2026,
+      "month": 8,
+      "status": "accepted",
+      "selected": true,
+      "highlight": true,
+      "links": {},
+      "tabs": ["3ddata", "artsandgaming"]
+    },
+    {
+      "id": "creativeinterpolation",
+      "image": "asset/images/creativeinterpolation.png",
+      "title": "How Generative Models Serve as Visual Artists for Creative Interpolation",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Yoonje Kang"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "workshop",
+      "venue": "CVPR Workshop",
+      "year": 2026,
+      "month": 6,
+      "status": "rejected",
+      "selected": false,
+      "highlight": false,
+      "links": {},
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "soundsthatshape",
+      "image": "asset/images/soundsthatshape.gif",
+      "title": "Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "conference",
+      "venue": "ICASSP",
+      "year": 2026,
+      "month": 4,
+      "selected": true,
+      "highlight": false,
+      "links": {
+        "project": "https://gh-bumsookim.github.io/SoundsThatShape/",
+        "pdf": "https://ieeexplore.ieee.org/document/11464799",
+        "github": "soon"
+      },
+      "tabs": ["3ddata", "sound"]
+    },
+    {
+      "id": "msthesis",
+      "image": "asset/images/msthesis.png",
+      "title": "Learning Pose‑to‑Semantic for 3D Anamorphic Art based on 2D Diffusion Guidance",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true}
+      ],
+      "venue_type": "thesis",
+      "venue": "MS Thesis",
+      "year": 2026,
+      "month": 2,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "extra_links": [
+          {"label": "CAU Library", "url": "https://library.cau.ac.kr/search/thesis-collections/9711092?index=1"},
+          {"label": "Dcollection", "url": "http://www.dcollection.net/handler/cau/000000247709"}
+        ],
+        "pdf": "https://dcollection.cau.ac.kr/public_resource/pdf/000000247709_20260403133105.pdf"
+      },
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "videotimetravel",
+      "image": "asset/images/videotimetravel.gif",
+      "title": "VideoTimeTravel: high-fidelity face re-aging diffusion models for production video",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Yunyoung Nam"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "journal",
+      "venue": "Visual Computer",
+      "venue_note": "(IF:2.9)",
+      "year": 2026,
+      "month": 2,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "project": "https://gh-bumsookim.github.io/VideoTimeTravel/",
+        "pdf": "https://link.springer.com/article/10.1007/s00371-025-04208-w"
+      },
+      "tabs": ["photos"]
+    },
+    {
+      "id": "taminggaussian",
+      "image": "asset/images/taminggaussian.png",
+      "title": "Taming Gaussian Densification in Score Distillation Sampling for High-Fidelity Text-to-3D Generation",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Junghun Ryu"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "conference",
+      "venue": "CGI",
+      "year": 2026,
+      "month": null,
+      "status": "rejected",
+      "selected": false,
+      "highlight": false,
+      "links": {},
+      "tabs": ["3ddata"]
+    },
+    {
+      "id": "scent2scene",
+      "image": "asset/images/scent2scene.png",
+      "title": "Scent2Scene: A Participatory Olfactory-to-Visual Experience Using Brain-Computer Interfaces and Generative AI",
+      "authors": [
+        {"name": "Rakbin Sung", "equal": true},
+        {"name": "Seongmi Woo", "equal": true},
+        {"name": "Dongmin Shin"},
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Yonghoon Jung"},
+        {"name": "Daewon Lee", "corresponding": true},
+        {"name": "Sanghyun Seo", "corresponding": true},
+        {"name": "Hye-Young Jo", "corresponding": true},
+        {"name": "Yoonji Kim", "corresponding": true}
+      ],
+      "venue_type": "other",
+      "venue": "",
+      "year": 2025,
+      "month": null,
+      "selected": false,
+      "highlight": false,
+      "links": {},
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "multifloodsynth",
+      "image": "asset/images/multifloodsynth.gif",
+      "title": "MultiFloodSynth: Multi-Annotated Flood Synthetic Dataset Generation",
+      "authors": [
+        {"name": "YoonJe Kang", "equal": true},
+        {"name": "Yonghoon Jung", "equal": true},
+        {"name": "Wonseop Shin", "equal": true},
+        {"name": "Bumsoo Kim", "url": "", "is_me": true, "equal": true},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "workshop",
+      "venue": "AAAI",
+      "venue_workshop": {"name": "GoodData Workshop", "url": "https://sites.google.com/servicenow.com/good-data-2025/program"},
+      "venue_note": "(Oral)",
+      "year": 2025,
+      "month": 2,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "pdf": "https://openreview.net/pdf?id=VQayOTsUAt",
+        "arxiv": "https://arxiv.org/abs/2502.03966"
+      },
+      "tabs": ["3ddata"]
+    },
+    {
+      "id": "makevlm",
+      "image": "asset/images/makevlm.png",
+      "title": "Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true, "equal": true},
+        {"name": "Wonseop Shin", "equal": true},
+        {"name": "Kyuchul Lee"},
+        {"name": "Yonghoon Jung"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "conference",
+      "venue": "WACV",
+      "year": 2025,
+      "month": 1,
+      "selected": true,
+      "highlight": false,
+      "links": {
+        "project": "https://gh-bumsookim.github.io/Cartoon-Hallucinations-Detection/",
+        "pdf": "https://openaccess.thecvf.com/content/WACV2025/papers/Kim_Make_VLM_Recognize_Visual_Hallucination_on_Cartoon_Character_Image_with_WACV_2025_paper.pdf",
+        "arxiv": "https://arxiv.org/abs/2403.15048",
+        "huggingface": "https://huggingface.co/datasets/Wseop/PA-ICVL-DataSet",
+        "chatgpt": "https://chatgpt.com/g/g-shNHYX7UV-hallucination-detector-correct-or-hallucination"
+      },
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "styletransfer",
+      "image": "asset/images/styletransfer.png",
+      "title": "Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Wonseop Shin"},
+        {"name": "Younghoon Jung"},
+        {"name": "Youngsup Park"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "journal",
+      "venue": "CMES",
+      "venue_note": "(Q2)",
+      "year": 2024,
+      "month": 10,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "pdf": "https://www.researchgate.net/profile/Bumsoo-Kim-11/publication/385019453_Explicitly_Color-Inspired_Neural_Style_Transfer_Using_Patchified_AdaIN/links/6717cc5fd796f96b8ecc41e7/Explicitly-Color-Inspired-Neural-Style-Transfer-Using-Patchified-AdaIN.pdf"
+      },
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "toonaging",
+      "image": "asset/images/toonaging.gif",
+      "title": "ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Abdul Muqeet"},
+        {"name": "Kyuchul Lee"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "workshop",
+      "venue": "CVPR",
+      "venue_workshop": {"name": "AI4CC Workshop", "url": "https://ai-for-content-creation.github.io/2024/"},
+      "year": 2024,
+      "month": 6,
+      "selected": true,
+      "highlight": true,
+      "links": {
+        "project": "https://gh-bumsookim.github.io/ToonAging/",
+        "pdf": "https://arxiv.org/pdf/2402.02733",
+        "arxiv": "https://arxiv.org/abs/2402.02733"
+      },
+      "tabs": ["photos"]
+    },
+    {
+      "id": "minecraftify",
+      "image": "asset/images/minecraftify.png",
+      "title": "Minecraft-ify: Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Byun"},
+        {"name": "Yonghoon Jung"},
+        {"name": "Wonseop Shin"},
+        {"name": "Sareer UI Amin"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "workshop",
+      "venue": "NeurIPS",
+      "venue_workshop": {"name": "ML4CD Workshop", "url": "https://neuripscreativityworkshop.github.io/2023/"},
+      "venue_note": "(Oral, Top 8.7%)",
+      "year": 2023,
+      "month": 12,
+      "selected": true,
+      "highlight": true,
+      "links": {
+        "project": "https://gh-bumsookim.github.io/Minecraft-ify/",
+        "pdf": "https://neuripscreativityworkshop.github.io/2023/papers/ml4cd2023_paper02.pdf",
+        "arxiv": "https://arxiv.org/abs/2402.05448"
+      },
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "vfra",
+      "image": "asset/images/vfra.gif",
+      "title": "Video Face Re-Aging: Toward Temporally Consistent Face Re-Aging",
+      "authors": [
+        {"name": "Abdul Muqeet", "equal": true},
+        {"name": "Kyuchul Lee", "equal": true},
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Yohan Hong"},
+        {"name": "Hyungrae Lee"},
+        {"name": "Woonggon Kim"},
+        {"name": "KwangHee Lee"}
+      ],
+      "venue_type": "arxiv",
+      "venue": "arXiv",
+      "year": 2023,
+      "month": 11,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "project": "https://video-reaging.github.io/",
+        "pdf": "https://arxiv.org/pdf/2311.11642",
+        "arxiv": "https://arxiv.org/abs/2311.11642"
+      },
+      "tabs": ["photos"]
+    },
+    {
+      "id": "gesture",
+      "image": "asset/images/gesture.jpeg",
+      "title": "EfficientNetV2-based dynamic gesture recognition using transformed scalogram from triaxial acceleration signal",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "journal",
+      "venue": "JCDE",
+      "venue_note": "(IF:4.9)",
+      "year": 2023,
+      "month": null,
+      "selected": false,
+      "highlight": false,
+      "links": {},
+      "tabs": ["realworld"]
+    },
+    {
+      "id": "intelligent",
+      "image": "asset/images/intelligent.gif",
+      "title": "Intelligent Digital Human Agent Service With Deep Learning Based-Face Recognition",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "journal",
+      "venue": "IEEE Access",
+      "venue_note": "(IF:3.9)",
+      "year": 2022,
+      "month": null,
+      "selected": false,
+      "highlight": false,
+      "links": {},
+      "tabs": ["realworld"]
+    }
+  ]
+}

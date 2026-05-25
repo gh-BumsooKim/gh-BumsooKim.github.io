@@ -177,6 +177,38 @@ def get_tab_pubs(pubs, tab_key):
 # ---------------------------------------------------------------------------
 # index.html transformations
 # ---------------------------------------------------------------------------
+
+def update_official_code(html, pubs):
+    """Replace content between CODE:official markers with pubs that have a real GitHub URL."""
+    items = []
+    for pub in sorted(pubs, key=sort_key):
+        links  = pub.get("links", {})
+        github = links.get("github")
+        year   = pub.get("year")
+        if github and github != "soon":
+            repo  = github.rstrip("/").split("/")[-1]
+            label = f"{repo} ({year})" if year else repo
+            items.append(
+                f'<li><a target="_blank" href="{github}">'
+                f'<img src="asset/images/github-mark.svg" height="15em">&nbsp;{label}</a></li>'
+            )
+        elif github == "soon" and links.get("github_repo"):
+            repo  = links["github_repo"]
+            label = f"{repo} ({year})" if year else repo
+            items.append(
+                f'<li><img src="asset/images/github-mark.svg" height="15em">&nbsp;{label} (TBD)</li>'
+            )
+
+    content = "\n".join(items) if items else "<li>TBD</li>"
+    pattern = r'(<!-- CODE:official:START -->)(.*?)(<!-- CODE:official:END -->)'
+    new_html, count = re.subn(pattern, rf'\1\n{content}\n\3', html, flags=re.DOTALL)
+    if count == 0:
+        print("WARNING: no marker found for 'CODE:official' — skipped")
+    else:
+        print(f"Updated official code section ({len(items)} entries)")
+    return new_html
+
+
 def update_tab_content(html, pubs):
     """Replace content between PUB markers for every tab."""
     for div_id, tab_key in TAB_DIV_IDS.items():
@@ -207,6 +239,7 @@ def main():
         html = f.read()
 
     html = update_tab_content(html, pubs)
+    html = update_official_code(html, pubs)
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)

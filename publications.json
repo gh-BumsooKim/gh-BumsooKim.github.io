@@ -85,7 +85,8 @@
       "links": {
         "project": "https://gh-bumsookim.github.io/SoundsThatShape/",
         "pdf": "https://ieeexplore.ieee.org/document/11464799",
-        "github": "soon"
+        "github": "soon",
+        "github_repo": "SoundsThatShape"
       },
       "tabs": ["3ddata", "sound"]
     },

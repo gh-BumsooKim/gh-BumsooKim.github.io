@@ -42,7 +42,11 @@
       "status": "accepted",
       "selected": true,
       "highlight": true,
-      "links": {},
+      "links": {
+        "project": "https://gh-bumsookim.github.io/Tex-Shadow/",
+        "pdf": "soon",
+        "github": "soon"
+      },
       "tabs": ["3ddata", "artsandgaming"]
     },
     {

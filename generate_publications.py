@@ -10,6 +10,7 @@ TAB_DIV_IDS = {
     "pubtabsound":         "sound",
     "pubtabartsandgaming": "artsandgaming",
     "pubtabrealworld":     "realworld",
+    "pubtabrendering":     "rendering",
 }
 
 STATUS_LABELS = {

@@ -1,5 +1,32 @@
 {
-  "publications": [ 
+  "publications": [
+    {
+      "id": "awesome-visual-creation",
+      "image": null,
+      "title": "Awesome Visual Creation",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["artsandgaming"]
+    },
+    {
+      "id": "awesome-image-intrinsic",
+      "image": null,
+      "title": "Awesome Image Intrinsic",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["photos"]
+    },
+    {
+      "id": "awesome-blue-noise-sampling",
+      "image": null,
+      "title": "Awesome Blue Noise Sampling",
+      "status": "ongoing",
+      "year": null,
+      "month": null,
+      "tabs": ["rendering"]
+    },
     {
       "id": "awesome-3d-motion",
       "image": null,

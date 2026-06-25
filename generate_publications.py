@@ -123,15 +123,41 @@ def render_links_html(pub):
     return webpage_html, code_html
 
 
+_TRACK_SUFFIXES = {"poster", "posters", "workshop", "workshops", "oral", "spotlight", "demo"}
+
+def _venue_short(venue):
+    words = venue.split()
+    while words and words[-1].lower() in _TRACK_SUFFIXES:
+        words = words[:-1]
+    return " ".join(words) if words else venue
+
+
+def render_venue_badge(pub):
+    if pub.get("status") == "ongoing":
+        return ""
+    venue = pub.get("venue", "").strip()
+    year = pub.get("year")
+    if venue.lower().startswith("searching"):
+        venue = ""
+    if venue:
+        venue = _venue_short(venue)
+    if not venue and not year:
+        return ""
+    label = f"{venue} {year}".strip() if venue else str(year)
+    return f'<div class="pub-venue-badge">{label}</div>'
+
+
 def render_card(pub):
     image = pub.get("image") or ""
     img_tag = f'<img src="{image}" width="120px">' if image else '<img width="120px">'
+    badge = render_venue_badge(pub)
+    media_inner = (f'{badge}\n    ' if badge else "") + img_tag
     card_cls = "pub-card" + (" pub-highlight" if pub.get("highlight") else "")
 
     if pub.get("status") == "ongoing":
         return (
             f'<div class="{card_cls}">\n'
-            f'    <div class="pubimgmedia">{img_tag}</div>\n'
+            f'    <div class="pubimgmedia">{media_inner}</div>\n'
             f'    <div class="pub-info">\n'
             f'        <div class="pubtitle">{pub["title"]}</div> (TBD)\n'
             f'        <div class="pubauthors"></div>\n'
@@ -150,7 +176,7 @@ def render_card(pub):
 
     return (
         f'<div class="{card_cls}">\n'
-        f'    <div class="pubimgmedia">{img_tag}</div>\n'
+        f'    <div class="pubimgmedia">{media_inner}</div>\n'
         f'    <div class="pub-info">\n'
         f'        <div class="pubtitle">{pub["title"]}</div>\n'
         f'        <div class="pubauthors">{authors_html}</div>\n'

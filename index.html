@@ -80,7 +80,9 @@ $(document).ready(function() {
 .pub-card .pubimgmedia {
     flex-shrink: 0;
     width: 130px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 2px;
 }
 .pub-card .pub-info {
@@ -104,6 +106,20 @@ $(document).ready(function() {
         ),
         linear-gradient(to bottom right, #dbe7fd, #ffffff);
     box-shadow: 0 1px 6px rgba(0,76,151,0.12);
+}
+/* ===== Venue badge above thumbnail ===== */
+.pub-venue-badge {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #2a449a;
+    border-radius: 5px;
+    line-height: 1.4;
+    max-width: 120px;
+    text-align: center;
 }
 </style>
 </head>
@@ -265,7 +281,8 @@ Local Time (GMT+09:00)<br>
                         <div class="pub-list">
 <!-- PUB:selected:START -->
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/texshadow.jpg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">SIGGRAPH 2026</div>
+    <img src="asset/images/texshadow.jpg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Tex-Shadow: Synthesizing Textured 3D Shadow Art via 3D-Aware Diffusion Prior</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -276,7 +293,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/soundsthatshape.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">ICASSP 2026</div>
+    <img src="asset/images/soundsthatshape.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -287,7 +305,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/makevlm.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">WACV 2025</div>
+    <img src="asset/images/makevlm.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>*, Wonseop Shin*, Kyuchul Lee, Yonghoon Jung, Sanghyun Seo</div>
@@ -298,7 +317,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/toonaging.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CVPR 2024</div>
+    <img src="asset/images/toonaging.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Abdul Muqeet, Kyuchul Lee, Sanghyun Seo</div>
@@ -309,7 +329,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/minecraftify.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">NeurIPS 2023</div>
+    <img src="asset/images/minecraftify.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Minecraft-ify: Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Byun, Yonghoon Jung, Wonseop Shin, Sareer UI Amin, Sanghyun Seo</div>
@@ -328,7 +349,8 @@ Local Time (GMT+09:00)<br>
                         <div class="pub-list">
 <!-- PUB:intime:START -->
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/creativeinterpolation.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">2026</div>
+    <img src="asset/images/creativeinterpolation.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">How Generative Models Serve as Visual Artists for Creative Interpolation</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -339,7 +361,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/texshadow.jpg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">SIGGRAPH 2026</div>
+    <img src="asset/images/texshadow.jpg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Tex-Shadow: Synthesizing Textured 3D Shadow Art via 3D-Aware Diffusion Prior</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -350,7 +373,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/soundsthatshape.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">ICASSP 2026</div>
+    <img src="asset/images/soundsthatshape.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -361,7 +385,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/msthesis.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">MS Thesis 2026</div>
+    <img src="asset/images/msthesis.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Learning Pose‑to‑Semantic for 3D Anamorphic Art based on 2D Diffusion Guidance</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a></div>
@@ -372,7 +397,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/videotimetravel.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">Visual Computer 2026</div>
+    <img src="asset/images/videotimetravel.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">VideoTimeTravel: high-fidelity face re-aging diffusion models for production video</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Yunyoung Nam, Sanghyun Seo</div>
@@ -383,7 +409,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/taminggaussian.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CGI 2026</div>
+    <img src="asset/images/taminggaussian.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Taming Gaussian Densification in Score Distillation Sampling for High-Fidelity Text-to-3D Generation</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Junghun Ryu, Sanghyun Seo</div>
@@ -394,7 +421,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/multifloodsynth.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">AAAI 2025</div>
+    <img src="asset/images/multifloodsynth.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">MultiFloodSynth: Multi-Annotated Flood Synthetic Dataset Generation</div>
         <div class="pubauthors">YoonJe Kang*, Yonghoon Jung*, Wonseop Shin*, <a target="_blank" href="">Bumsoo Kim</a>*, Sanghyun Seo</div>
@@ -405,7 +433,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/makevlm.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">WACV 2025</div>
+    <img src="asset/images/makevlm.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>*, Wonseop Shin*, Kyuchul Lee, Yonghoon Jung, Sanghyun Seo</div>
@@ -416,7 +445,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/scent2scene.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">2025</div>
+    <img src="asset/images/scent2scene.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Scent2Scene: A Participatory Olfactory-to-Visual Experience Using Brain-Computer Interfaces and Generative AI</div>
         <div class="pubauthors">Rakbin Sung*, Seongmi Woo*, Dongmin Shin, <a target="_blank" href="">Bumsoo Kim</a>, Yonghoon Jung, Daewon Lee&dagger;, Sanghyun Seo&dagger;, Hye-Young Jo&dagger;, Yoonji Kim&dagger;</div>
@@ -427,7 +457,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/styletransfer.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CMES 2024</div>
+    <img src="asset/images/styletransfer.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Younghoon Jung, Youngsup Park, Sanghyun Seo</div>
@@ -438,7 +469,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/toonaging.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CVPR 2024</div>
+    <img src="asset/images/toonaging.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Abdul Muqeet, Kyuchul Lee, Sanghyun Seo</div>
@@ -449,7 +481,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/minecraftify.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">NeurIPS 2023</div>
+    <img src="asset/images/minecraftify.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Minecraft-ify: Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Byun, Yonghoon Jung, Wonseop Shin, Sareer UI Amin, Sanghyun Seo</div>
@@ -460,7 +493,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/vfra.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">arXiv 2023</div>
+    <img src="asset/images/vfra.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Video Face Re-Aging: Toward Temporally Consistent Face Re-Aging</div>
         <div class="pubauthors">Abdul Muqeet*, Kyuchul Lee*, <a target="_blank" href="">Bumsoo Kim</a>, Yohan Hong, Hyungrae Lee, Woonggon Kim, KwangHee Lee</div>
@@ -471,7 +505,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/gesture.jpeg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">JCDE 2023</div>
+    <img src="asset/images/gesture.jpeg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">EfficientNetV2-based dynamic gesture recognition using transformed scalogram from triaxial acceleration signal</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -482,7 +517,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/intelligent.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">IEEE Access 2022</div>
+    <img src="asset/images/intelligent.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Intelligent Digital Human Agent Service With Deep Learning Based-Face Recognition</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -512,7 +548,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/texshadow.jpg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">SIGGRAPH 2026</div>
+    <img src="asset/images/texshadow.jpg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Tex-Shadow: Synthesizing Textured 3D Shadow Art via 3D-Aware Diffusion Prior</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -523,7 +560,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/soundsthatshape.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">ICASSP 2026</div>
+    <img src="asset/images/soundsthatshape.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -534,7 +572,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/taminggaussian.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CGI 2026</div>
+    <img src="asset/images/taminggaussian.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Taming Gaussian Densification in Score Distillation Sampling for High-Fidelity Text-to-3D Generation</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Junghun Ryu, Sanghyun Seo</div>
@@ -545,7 +584,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/multifloodsynth.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">AAAI 2025</div>
+    <img src="asset/images/multifloodsynth.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">MultiFloodSynth: Multi-Annotated Flood Synthetic Dataset Generation</div>
         <div class="pubauthors">YoonJe Kang*, Yonghoon Jung*, Wonseop Shin*, <a target="_blank" href="">Bumsoo Kim</a>*, Sanghyun Seo</div>
@@ -575,7 +615,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/videotimetravel.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">Visual Computer 2026</div>
+    <img src="asset/images/videotimetravel.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">VideoTimeTravel: high-fidelity face re-aging diffusion models for production video</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Yunyoung Nam, Sanghyun Seo</div>
@@ -586,7 +627,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/toonaging.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CVPR 2024</div>
+    <img src="asset/images/toonaging.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">ToonAging: Face Re-Aging upon Artistic Portrait Style Transfer</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Abdul Muqeet, Kyuchul Lee, Sanghyun Seo</div>
@@ -597,7 +639,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/vfra.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">arXiv 2023</div>
+    <img src="asset/images/vfra.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Video Face Re-Aging: Toward Temporally Consistent Face Re-Aging</div>
         <div class="pubauthors">Abdul Muqeet*, Kyuchul Lee*, <a target="_blank" href="">Bumsoo Kim</a>, Yohan Hong, Hyungrae Lee, Woonggon Kim, KwangHee Lee</div>
@@ -638,7 +681,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/soundsthatshape.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">ICASSP 2026</div>
+    <img src="asset/images/soundsthatshape.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Sounds That Shape: Audio-Driven 3D Mesh Generation with Attribute-Decoupled Score Distillation Sampling</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -668,7 +712,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/creativeinterpolation.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">2026</div>
+    <img src="asset/images/creativeinterpolation.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">How Generative Models Serve as Visual Artists for Creative Interpolation</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -679,7 +724,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/texshadow.jpg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">SIGGRAPH 2026</div>
+    <img src="asset/images/texshadow.jpg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Tex-Shadow: Synthesizing Textured 3D Shadow Art via 3D-Aware Diffusion Prior</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -690,7 +736,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/msthesis.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">MS Thesis 2026</div>
+    <img src="asset/images/msthesis.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Learning Pose‑to‑Semantic for 3D Anamorphic Art based on 2D Diffusion Guidance</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a></div>
@@ -701,7 +748,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/makevlm.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">WACV 2025</div>
+    <img src="asset/images/makevlm.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Make VLM Recognize Visual Hallucination or Cartoon Character Image with Pose Information</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>*, Wonseop Shin*, Kyuchul Lee, Yonghoon Jung, Sanghyun Seo</div>
@@ -712,7 +760,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/scent2scene.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">2025</div>
+    <img src="asset/images/scent2scene.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Scent2Scene: A Participatory Olfactory-to-Visual Experience Using Brain-Computer Interfaces and Generative AI</div>
         <div class="pubauthors">Rakbin Sung*, Seongmi Woo*, Dongmin Shin, <a target="_blank" href="">Bumsoo Kim</a>, Yonghoon Jung, Daewon Lee&dagger;, Sanghyun Seo&dagger;, Hye-Young Jo&dagger;, Yoonji Kim&dagger;</div>
@@ -723,7 +772,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/styletransfer.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">CMES 2024</div>
+    <img src="asset/images/styletransfer.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Younghoon Jung, Youngsup Park, Sanghyun Seo</div>
@@ -734,7 +784,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card pub-highlight">
-    <div class="pubimgmedia"><img src="asset/images/minecraftify.png" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">NeurIPS 2023</div>
+    <img src="asset/images/minecraftify.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Minecraft-ify: Minecraft Style Image Generation with Text-guided Image Editing for In-Game Application</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Byun, Yonghoon Jung, Wonseop Shin, Sareer UI Amin, Sanghyun Seo</div>
@@ -753,7 +804,8 @@ Local Time (GMT+09:00)<br>
                         <div class="pub-list">
 <!-- PUB:realworld:START -->
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/gesture.jpeg" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">JCDE 2023</div>
+    <img src="asset/images/gesture.jpeg" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">EfficientNetV2-based dynamic gesture recognition using transformed scalogram from triaxial acceleration signal</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
@@ -764,7 +816,8 @@ Local Time (GMT+09:00)<br>
     </div>
 </div>
 <div class="pub-card">
-    <div class="pubimgmedia"><img src="asset/images/intelligent.gif" width="120px"></div>
+    <div class="pubimgmedia"><div class="pub-venue-badge">IEEE Access 2022</div>
+    <img src="asset/images/intelligent.gif" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Intelligent Digital Human Agent Service With Deep Learning Based-Face Recognition</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>

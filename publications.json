@@ -1,21 +1,27 @@
 {
   "publications": [
     {
-      "id": "awesome-visual-creation",
-      "image": null,
-      "title": "Awesome Visual Creation",
-      "status": "ongoing",
-      "year": null,
-      "month": null,
-      "tabs": ["artsandgaming"]
-    },
-    {
       "id": "awesome-image-intrinsic",
       "image": null,
       "title": "Awesome Image Intrinsic",
-      "status": "ongoing",
-      "year": null,
-      "month": null,
+      "venue_type": "workshop",
+      "venue": "ECCV",
+      "venue_workshop": {"name": "Workshop", "url": ""},
+      "status": "under_review",
+      "year": 2026,
+      "month": 7,
+      "tabs": ["photos"]
+    },
+    {
+      "id": "awesome-re-aging",
+      "image": null,
+      "title": "Awesome Re-Aging",
+      "venue_type": "journal",
+      "venue": "IEEE TVCG",
+      "venue_note": "(IF: 6.8)",
+      "status": "under_review",
+      "year": 2026,
+      "month": 6,
       "tabs": ["photos"]
     },
     {
@@ -66,7 +72,6 @@
       "venue": "SIGGRAPH Posters",
       "year": 2026,
       "month": 6,
-      "status": "accepted",
       "selected": true,
       "highlight": true,
       "links": {
@@ -78,19 +83,16 @@
     },
     {
       "id": "creativeinterpolation",
-      "image": "asset/images/creativeinterpolation.png",
-      "title": "How Generative Models Serve as Visual Artists for Creative Interpolation",
-      "authors": [
-        {"name": "Bumsoo Kim", "url": "", "is_me": true},
-        {"name": "Sanghyun Seo"}
-      ],
-      "venue": "Searching Venue",
-      "year": 2026,
-      "month": 7,
+      "title": "Awesome Artistic Creation",
+      "venue_type": "conference",
+      "venue": "AAAI",
+      "status": "under_review",
+      "year": 2027,
+      "month": 1,
       "selected": false,
       "highlight": false,
       "links": {},
-      "tabs": ["artsandgaming"]
+      "tabs": ["artsandgaming", "photos"]
     },
     {
       "id": "soundsthatshape",
@@ -157,25 +159,6 @@
         "pdf": "https://link.springer.com/article/10.1007/s00371-025-04208-w"
       },
       "tabs": ["photos"]
-    },
-    {
-      "id": "taminggaussian",
-      "image": "asset/images/taminggaussian.png",
-      "title": "Taming Gaussian Densification in Score Distillation Sampling for High-Fidelity Text-to-3D Generation",
-      "authors": [
-        {"name": "Bumsoo Kim", "url": "", "is_me": true},
-        {"name": "Junghun Ryu"},
-        {"name": "Sanghyun Seo"}
-      ],
-      "venue_type": "conference",
-      "venue": "CGI",
-      "year": 2026,
-      "month": null,
-      "status": "rejected",
-      "selected": false,
-      "highlight": false,
-      "links": {},
-      "tabs": ["3ddata"]
     },
     {
       "id": "scent2scene",
@@ -297,7 +280,7 @@
         "pdf": "https://arxiv.org/pdf/2402.02733",
         "arxiv": "https://arxiv.org/abs/2402.02733"
       },
-      "tabs": ["photos"]
+      "tabs": ["photos", "artsandgaming"]
     },
     {
       "id": "minecraftify",

@@ -64,7 +64,7 @@ $(document).ready(function() {
 .pub-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     margin-top: 8px;
 }
 .pub-card {
@@ -75,7 +75,7 @@ $(document).ready(function() {
     padding: 12px 16px;
     background: #ffffff;
     border: 1px solid #e5e5e5;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
 }
 .pub-card .pubimgmedia {
     flex-shrink: 0;
@@ -94,9 +94,41 @@ $(document).ready(function() {
     font-weight: bold;
     text-decoration: underline;
 }
+/* ===== Dataset cards ===== */
+.dataset-card {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 22px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+.dataset-card .pubimgmedia {
+    flex-shrink: 0;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2px;
+}
+.dataset-card .pub-info {
+    flex: 1;
+    min-width: 0;
+}
+.dataset-card .pubtitle    { font-size: 1.25em; }
+.dataset-card .pubvenueyear { font-size: 1.05em; }
+.dataset-card .pubwebpage  { font-size: 1.05em; margin-top: 6px; }
+/* ===== Top nav: fit 5 tabs in one row ===== */
+#topnav .h1tab {
+    font-size: 1.6em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
 /* ===== Top-tier highlight ===== */
 .pub-card.pub-highlight {
-    border-left: 4px solid #2a449a;
+    /* border-left: 4px solid #2a449a; */
     background:
         linear-gradient(
             108deg,
@@ -104,7 +136,7 @@ $(document).ready(function() {
             rgba(255,255,255,0.5) 50%,
             transparent           62%
         ),
-        linear-gradient(to bottom right, #dbe7fd, #ffffff);
+        linear-gradient(to bottom right, #d1e1fd, #ffffff);
     box-shadow: 0 1px 6px rgba(0,76,151,0.12);
 }
 /* ===== Venue badge above thumbnail ===== */
@@ -114,8 +146,8 @@ $(document).ready(function() {
     padding: 2px 6px;
     font-size: 12px;
     font-weight: 700;
-    color: #ffffff;
-    background: #2a449a;
+    color: #2a449a;
+    /*  background: #2a449a; */
     border-radius: 5px;
     line-height: 1.4;
     max-width: 120px;
@@ -232,16 +264,24 @@ Local Time (GMT+09:00)<br>
 
 <!-- Top - Central content -->
 <section>
-    <ul class="nav nav-pills nav-fill">
+    <ul id="topnav" class="nav nav-pills nav-fill">
         <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#research"><p class="h1tab">Research</p></a></li>
 <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#me"><p class="h1tab">Me</p></a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#artwork"><p class="h1tab">Artwork</p></a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#implementation"><p class="h1tab">Code</p></a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#dataset"><p class="h1tab">Dataset</p></a></li>
     </ul>
 
     <div class="tab-content">
         <!-- Top - Research -->
         <div id="research" class="tab-pane container active">
+            <div style="margin:24px 0 14px 0; text-align:center; padding:0px 0 2px 0; line-height:1;">
+                <span style="position:relative; display:inline-block; font-size:3em; font-weight:600; font-style:italic; font-family:Georgia,'Times New Roman',serif; letter-spacing:0.02em;">
+                    <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(1.65); opacity:0.05; white-space:nowrap; pointer-events:none; color:#1a1a2e;">Sound</span>
+                    <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(1.32); opacity:0.11; white-space:nowrap; pointer-events:none; color:#1a1a2e;">Sound</span>
+                    <span style="position:relative; z-index:1; color:#1a1a2e;">Sound</span>
+                </span><span style="font-size:3em; font-weight:300; font-style:italic; font-family:Georgia,'Times New Roman',serif; color:#2a449a;"> × </span><span style="font-size:3em; font-weight:600; font-style:italic; font-family:Georgia,'Times New Roman',serif; background:linear-gradient(90deg,#f857a6,#ff5858,#ff9a3c,#f9d423,#43e97b,#38b2f8,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.02em;">Visual</span>
+            </div>
             <p class="blurbtext"><em>I'm actively seeking a research scientist position for alternative military service! for Fall 2026</em></p>
     
             <p class="blurbtext">
@@ -886,11 +926,217 @@ Local Time (GMT+09:00)<br>
         </p>
 
         <p>Research fields: Multi-modal 2D/3D/Video generation and editing, audio-visual integration, differentiable rendering, and other artistic and gaming tasks.</p>
+        <h4>Publication Timeline</h4>
+        <div id="pub-chart-wrap" style="position:relative;margin:8px 0 20px;">
+          <svg id="pub-chart" style="display:block;"></svg>
+          <div id="pub-chart-tip" style="opacity:0;transition:opacity 0.18s ease;position:absolute;background:rgba(20,26,50,0.93);color:#fff;font-size:13px;padding:5px 9px;border-radius:5px;pointer-events:none;max-width:240px;line-height:1.4;z-index:99;"></div>
+        </div>
+        <script>
+(function(){
+  const PUBS=[
+    {venue:"ICASSP",year:2027,status:"under_review"},
+    {venue:"ECCV",year:2026,workshop:"Workshop",status:"under_review"},
+    {venue:"AAAI",year:2027,status:"under_review"},
+    {title:"Tex-Shadow",venue:"SIGGRAPH",year:2026,workshop:"Poster",link:"https://gh-bumsookim.github.io/Tex-Shadow/"},
+    {title:"Sounds That Shape",venue:"ICASSP",year:2026,link:"https://gh-bumsookim.github.io/SoundsThatShape/"},
+    {title:"Make VLM Recognize Visual Hallucination",venue:"WACV",year:2025,link:"https://gh-bumsookim.github.io/Cartoon-Hallucinations-Detection/"},
+    {title:"MultiFloodSynth",venue:"AAAI",year:2025,highlight:true,workshop:"GoodData Workshop",link:"https://arxiv.org/abs/2502.03966"},
+    {title:"ToonAging",venue:"CVPR",year:2024,workshop:"AI4CC Workshop",link:"https://gh-bumsookim.github.io/ToonAging/"},
+    {title:"Minecraft-ify",venue:"NeurIPS",year:2023,highlight:true,workshop:"ML4CD Workshop",link:"https://gh-bumsookim.github.io/Minecraft-ify/"},
+  ];
+  const VENUES=["SIGGRAPH","CVPR","ECCV","NeurIPS","AAAI","WACV","ICASSP"];
+  const YEARS=[2022,2023,2024,2025,2026,2027,2028,2029,2030];
+  const NS="http://www.w3.org/2000/svg";
+  const wrap=document.getElementById("pub-chart-wrap");
+  const tip=document.getElementById("pub-chart-tip");
 
+  function mk(tag,a,txt){
+    const e=document.createElementNS(NS,tag);
+    Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));
+    if(txt!==undefined)e.textContent=txt;
+    return e;
+  }
+
+  function addHover(c,pub){
+    const isUR=pub.status==="under_review";
+    c.addEventListener("mouseenter",()=>{
+      let html;
+      if(isUR){
+        html=`<div style="font-weight:700;margin-bottom:2px;opacity:.6">[Under Review]</div>`;
+        html+=`<div style="opacity:.85">${pub.venue} ${pub.year}</div>`;
+      }else{
+        html=`<div style="font-weight:700;margin-bottom:2px">${pub.title}</div>`;
+        html+=`<div style="opacity:.85">${pub.venue} ${pub.year}${pub.workshop?` · ${pub.workshop}`:""}</div>`;
+        if(pub.highlight)html+=`<div style="opacity:.6;font-size:11px;margin-top:2px">★ ${pub.tag||"Oral / Highlighted"}</div>`;
+        if(pub.link)html+=`<div style="opacity:.45;font-size:11px">click to open →</div>`;
+      }
+      tip.innerHTML=html;
+      tip.style.opacity="0";
+      const br=wrap.getBoundingClientRect();
+      const cr=c.getBoundingClientRect();
+      let tx=cr.left-br.left+cr.width/2;
+      const ty=cr.top-br.top-tip.offsetHeight-8;
+      tx=Math.min(tx,br.width-tip.offsetWidth-4);
+      tx=Math.max(tx,4);
+      tip.style.left=tx+"px";
+      tip.style.top=ty+"px";
+      requestAnimationFrame(()=>tip.style.opacity="1");
+    });
+    c.addEventListener("mouseleave",()=>tip.style.opacity="0");
+    if(!isUR&&pub.link)c.addEventListener("click",()=>window.open(pub.link,"_blank"));
+  }
+
+  function render(){
+    const svg=document.getElementById("pub-chart");
+    if(svg.getAttribute("data-rendered"))return;
+    const W0=wrap.clientWidth;
+    if(!W0)return;
+    svg.setAttribute("data-rendered","1");
+
+    const R=16,LW=118,PAD=8,HH=36,CH=46,LGH=10;
+    const CW=Math.max(44,Math.floor((W0-LW-PAD)/YEARS.length));
+    const W=LW+YEARS.length*CW+PAD;
+    const H=HH+VENUES.length*CH+PAD+LGH;
+
+    svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    svg.setAttribute("width",W);
+    svg.setAttribute("height",H);
+    svg.setAttribute("font-family","inherit");
+
+    // Gradient for under-review cells
+    const defs=mk("defs",{});
+    const grad=mk("linearGradient",{id:"ur-grad",x1:"0",y1:"0",x2:"1",y2:"1"});
+    [["10%","#dce4f0"],["90%","#2a449a"]].forEach(([off,color])=>{
+      grad.appendChild(mk("stop",{offset:off,"stop-color":color,"stop-opacity":"1"}));
+    });
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    // Column highlights (bottom layer)
+    const colHL=YEARS.map((_,xi)=>{
+      const r=mk("rect",{x:LW+xi*CW+3,y:HH,width:CW-6,height:VENUES.length*CH,
+        fill:"#eef5ff",rx:6,opacity:"0",style:"pointer-events:none"});
+      svg.appendChild(r);
+      return r;
+    });
+
+    // Dashed timeline lines per venue row
+    VENUES.forEach((_,yi)=>{
+      svg.appendChild(mk("line",{
+        x1:LW+CW/2,y1:HH+yi*CH+CH/2,
+        x2:LW+(YEARS.length-1)*CW+CW/2,y2:HH+yi*CH+CH/2,
+        stroke:"#c8d4ea","stroke-width":"1.5","stroke-dasharray":"4 4"
+      }));
+    });
+
+    // Year + venue labels
+    YEARS.forEach((yr,xi)=>{
+      svg.appendChild(mk("text",{
+        x:LW+xi*CW+CW/2,y:HH-12,
+        "text-anchor":"middle","font-size":"16","font-weight":"600",fill:"#2a449a"
+      },yr));
+    });
+    VENUES.forEach((v,yi)=>{
+      svg.appendChild(mk("text",{
+        x:LW-8,y:HH+yi*CH+CH/2+6,
+        "text-anchor":"end","font-size":"16",fill:"#333"
+      },v));
+    });
+
+    // Pub lookup
+    const pubMap={};
+    PUBS.forEach(p=>pubMap[`${p.venue}_${p.year}`]=p);
+
+    // Column hover
+    const colTimers={};
+    function showCol(xi){clearTimeout(colTimers[xi]);colHL[xi].setAttribute("opacity","1");}
+    function hideCol(xi){colTimers[xi]=setTimeout(()=>colHL[xi].setAttribute("opacity","0"),60);}
+
+    // Base cells; collect pub entries for clone layer
+    const pubYears=new Set(PUBS.map(p=>p.year));
+    const pubEntries=[];
+    VENUES.forEach((venue,yi)=>{
+      YEARS.forEach((year,xi)=>{
+        const cx=LW+xi*CW+CW/2,cy=HH+yi*CH+CH/2;
+        const pub=pubMap[`${venue}_${year}`];
+        if(pub){
+          const isUR=pub.status==="under_review";
+          const cell=isUR
+            ? mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,
+                fill:"url(#ur-grad)",style:"cursor:default"})
+            : mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,
+                fill:"#2a449a",style:"cursor:pointer"});
+          addHover(cell,pub);
+          svg.appendChild(cell);
+          if(!isUR&&pub.highlight){
+            svg.appendChild(mk("rect",{x:cx-R-4,y:cy-R-4,width:(R+4)*2,height:(R+4)*2,
+              rx:6,fill:"none",stroke:"#2a449a","stroke-width":"2",opacity:"0.45",
+              style:"pointer-events:none"}));
+          }
+          // Clone for top layer (rendered above fog, initially hidden)
+          const clone=isUR
+            ? mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,
+                fill:"url(#ur-grad)",style:"pointer-events:none"})
+            : mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,
+                fill:"#2a449a",style:"pointer-events:none"});
+          clone.setAttribute("display","none");
+          let cloneRing=null;
+          if(!isUR&&pub.highlight){
+            cloneRing=mk("rect",{x:cx-R-4,y:cy-R-4,width:(R+4)*2,height:(R+4)*2,
+              rx:6,fill:"none",stroke:"#2a449a","stroke-width":"2",opacity:"0.45",
+              style:"pointer-events:none"});
+            cloneRing.setAttribute("display","none");
+          }
+          pubEntries.push({cell,clone,cloneRing,xi});
+        }else{
+          const cell=mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,fill:"#dce4f0"});
+          svg.appendChild(cell);
+          if(pubYears.has(year)){
+            cell.addEventListener("mouseenter",()=>showCol(xi));
+            cell.addEventListener("mouseleave",()=>hideCol(xi));
+          }
+        }
+      });
+    });
+
+    // Fog — above base cells
+    const fog=mk("rect",{x:LW,y:HH,width:YEARS.length*CW,height:VENUES.length*CH,
+      fill:"white",style:"pointer-events:none;opacity:0;transition:opacity 0.18s ease"});
+    svg.appendChild(fog);
+
+    // Top-layer clones — above fog, no pointer events (no DOM movement needed)
+    pubEntries.forEach(({clone,cloneRing})=>{
+      svg.appendChild(clone);
+      if(cloneRing)svg.appendChild(cloneRing);
+    });
+
+    // Focus: show fog + clone on enter, hide on leave — no DOM movement
+    let fogTimer;
+    pubEntries.forEach(({cell,clone,cloneRing,xi})=>{
+      cell.addEventListener("mouseenter",()=>{
+        clearTimeout(fogTimer);
+        fog.style.opacity="0.62";
+        clone.removeAttribute("display");
+        if(cloneRing)cloneRing.removeAttribute("display");
+        showCol(xi);
+      });
+      cell.addEventListener("mouseleave",()=>{
+        fogTimer=setTimeout(()=>fog.style.opacity="0",40);
+        clone.setAttribute("display","none");
+        if(cloneRing)cloneRing.setAttribute("display","none");
+        hideCol(xi);
+      });
+    });
+  }
+
+  render();
+  $(document).on("shown.bs.tab",'a[href="#me"]',render);
+})();
+        </script>
         <h4>Academic lineage</h4>
         <div class="studentpub">
         <ul>
-            <li>(2026) Research intern at AI Center, <a href="https://www.smilegate.com/en/">Smilegate</a>.</li>
+            <li>(2026) Research intern with <a href="https://scholar.google.com/citations?user=Hr77Pz0AAAAJ" target="_blank">Jaehoon Jang</a>, <a href="https://scholar.google.com/citations?user=ZTnbwzIAAAAJ" target="_blank">Donggoo Kang</a> at AI Center, <a href="https://www.smilegate.com/en/">Smilegate</a>.</li>
             <li>(2026) MSc at <a href="https://neweng.cau.ac.kr/index.do">Chung-Ang University</a> with <a href="https://grlab.cau.ac.kr/?page_id=10">Sanghyun Seo</a>.</li>
             <li>(2025) Research intern with <a href="https://scholar.google.com/citations?user=zbJI0jcAAAAJ" target="_blank">Hyeokjoon Kwon</a>, <a href="https://scholar.google.com/citations?user=4tqQiJ8AAAAJ" target="_blank">Hyebin Cho</a>, <a href="https://scholar.google.co.kr/citations?user=Tf2kXrcAAAAJ" target="_blank">Hwiyeon Yoo</a> and <a href="https://scholar.google.com/citations?user=zONHZaUAAAAJ" target="_blank">Junghyun Oh</a> at the <a href="https://www.boeing.com/">Boeing Research and Technology</a>.</li>
             <li>(2024) Research intern with <a href="https://scholar.google.com/citations?user=-BBpuKMAAAAJ" target="_blank">Abdul Muqeet</a>, <a href="https://scholar.google.com/citations?user=jXiLuh8AAAAJ" target="_blank">Kyuchul Lee</a> and <a href="https://scholar.google.com/citations?user=i79faMoAAAAJ" target="_blank">Kwang Hee Lee</a> at the <a href="https://vivestudios-en.imweb.me/">VIVE STUDIOS</a>.</li>
@@ -903,7 +1149,7 @@ Local Time (GMT+09:00)<br>
             <ul>
                 <li>(2024) Reviewer for CVPR 2024, ICLR 2025, WACV 2025</li>
                 <li>(2025) Reviewer for AAAI 2026, ICLR 2026, ICASSP 2026</li>
-                <li>(2026) Reviewer for ECCV 2026</li>
+                <li>(2026) Reviewer for AAAI 2027</li>
             </ul>
         </div>
         <h4>Miscellaneous</h4>
@@ -955,6 +1201,37 @@ Local Time (GMT+09:00)<br>
             <ul>
                 <li><a target="_target" href="https://github.com/gh-BumsooKim/FADING_stable"><img src="asset/images/github-mark.svg" height="15em">&nbsp;FADING (2024~)</a></li> 
             </ul>
+            </div>
+        </div>
+        <!-- Top - Dataset -->
+        <div id="dataset" class="tab-pane container fade">
+            <div class="pub-list" style="margin-top:12px;">
+                <div class="dataset-card">
+                    <div class="pubimgmedia">
+                        <img src="asset/images/dataset-nisr.jpg" width="200px">
+                    </div>
+                    <div class="pub-info">
+                        <div class="pubtitle">NISR Dataset</div>
+                        <div class="pubvenueyear">2026</div>
+                        <div class="pubnote">1,100 3D object meshes paired with impact sound recordings and modal analysis data for Neural Inverse Sound Rendering across eight material types.</div>
+                        <div class="pubwebpage">
+                            <a target="_blank" href="https://huggingface.co/datasets/BumsooKim00/nisr-dataset"><img src="asset/images/huggingface-logo.svg" height="15em">&nbsp;HuggingFace Dataset</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataset-card">
+                    <div class="pubimgmedia">
+                        <img src="asset/images/dataset-pa_icvl.png" width="200px">
+                    </div>
+                    <div class="pub-info">
+                        <div class="pubtitle">PA-ICVL Dataset</div>
+                        <div class="pubvenueyear">2025</div>
+                        <div class="pubnote">Benchmark for detecting semantic structural hallucinations in cartoon images, pairing RGB frames with pose guidance for VLM-based evaluation.</div>
+                        <div class="pubwebpage">
+                            <a target="_blank" href="https://huggingface.co/datasets/Wseop/PA-ICVL-DataSet"><img src="asset/images/huggingface-logo.svg" height="15em">&nbsp;HuggingFace Dataset</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

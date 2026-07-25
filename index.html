@@ -16,7 +16,9 @@ function bustImage() {
         "asset/images/aaai2025.jpg",
         "asset/images/wacv2025.jpg",
         "asset/images/ismar2025.jpg",
-        "asset/images/sigasia2025.jpg"
+        "asset/images/sigasia2025.jpg",
+        "asset/images/icassp2026.jpg",
+        "asset/images/sig2026.jpg"
     ];
     var r = Math.floor(Math.random() * paths.length);
     document.write("<img width='210px' src='" + paths[r] + "' alt='Which Ben will greet you next?!'>");
@@ -280,7 +282,7 @@ Local Time (GMT+09:00)<br>
                     <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(1.65); opacity:0.05; white-space:nowrap; pointer-events:none; color:#1a1a2e;">Sound</span>
                     <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(1.32); opacity:0.11; white-space:nowrap; pointer-events:none; color:#1a1a2e;">Sound</span>
                     <span style="position:relative; z-index:1; color:#1a1a2e;">Sound</span>
-                </span><span style="font-size:3em; font-weight:300; font-style:italic; font-family:Georgia,'Times New Roman',serif; color:#2a449a;"> × </span><span style="font-size:3em; font-weight:600; font-style:italic; font-family:Georgia,'Times New Roman',serif; background:linear-gradient(90deg,#f857a6,#ff5858,#ff9a3c,#f9d423,#43e97b,#38b2f8,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.02em;">Visual</span>
+                </span><span style="font-size:3em; font-weight:300; font-style:italic; font-family:Georgia,'Times New Roman',serif; color:#2a449a;"> × </span><span style="font-size:3em; font-weight:600; font-style:italic; font-family:Georgia,'Times New Roman',serif; background:linear-gradient(90deg,#f97316,#ec4899,#2a449a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:0.02em;">Visual</span>
             </div>
             <p class="blurbtext"><em>I'm actively seeking a research scientist position for alternative military service! for Fall 2026</em></p>
     
@@ -934,6 +936,7 @@ Local Time (GMT+09:00)<br>
         <script>
 (function(){
   const PUBS=[
+    {venue:"SIGGRAPH Asia",year:2026,status:"under_review"},
     {venue:"ICASSP",year:2027,status:"under_review"},
     {venue:"ECCV",year:2026,workshop:"Workshop",status:"under_review"},
     {venue:"AAAI",year:2027,status:"under_review"},
@@ -944,7 +947,7 @@ Local Time (GMT+09:00)<br>
     {title:"ToonAging",venue:"CVPR",year:2024,workshop:"AI4CC Workshop",link:"https://gh-bumsookim.github.io/ToonAging/"},
     {title:"Minecraft-ify",venue:"NeurIPS",year:2023,highlight:true,workshop:"ML4CD Workshop",link:"https://gh-bumsookim.github.io/Minecraft-ify/"},
   ];
-  const VENUES=["SIGGRAPH","CVPR","ECCV","NeurIPS","AAAI","WACV","ICASSP"];
+  const VENUES=["SIGGRAPH","SIGGRAPH Asia","CVPR","ECCV","NeurIPS","AAAI","WACV","ICASSP"];
   const YEARS=[2022,2023,2024,2025,2026,2027,2028,2029,2030];
   const NS="http://www.w3.org/2000/svg";
   const wrap=document.getElementById("pub-chart-wrap");

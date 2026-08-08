@@ -1,18 +1,6 @@
 {
   "publications": [
     {
-      "id": "awesome-image-intrinsic",
-      "image": null,
-      "title": "Awesome Image Intrinsic",
-      "venue_type": "workshop",
-      "venue": "ECCV",
-      "venue_workshop": {"name": "Workshop", "url": ""},
-      "status": "under_review",
-      "year": 2026,
-      "month": 7,
-      "tabs": ["photos"]
-    },
-    {
       "id": "awesome-re-aging",
       "image": null,
       "title": "Awesome Re-Aging",
@@ -21,17 +9,8 @@
       "venue_note": "(IF: 6.8)",
       "status": "under_review",
       "year": 2026,
-      "month": 6,
+      "month": 12,
       "tabs": ["photos"]
-    },
-    {
-      "id": "awesome-blue-noise-sampling",
-      "image": null,
-      "title": "Awesome Blue Noise Sampling",
-      "status": "ongoing",
-      "year": null,
-      "month": null,
-      "tabs": ["rendering"]
     },
     {
       "id": "awesome-3d-motion",
@@ -58,7 +37,30 @@
       "status": "ongoing",
       "year": null,
       "month": null,
-      "tabs": ["sound"]
+      "tabs": ["sound", "rendering"]
+    },
+    {
+      "id": "pixres",
+      "image": "asset/images/pixres.png",
+      "title": "Noise Frequencies Let a Pixel-Space Diffusion Prior Detect Native-Resolution Image",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Hyun-Jun Jin"},
+        {"name": "Mi Young Lee"},
+        {"name": "Seungmin Rho"},
+        {"name": "Sanghyun Seo"}
+      ],
+      "venue_type": "workshop",
+      "venue": "ECCV",
+      "venue_workshop": {"name": "LoViF Workshop", "url": "https://lovif-eccv2026-workshop.github.io/"},
+      "year": 2026,
+      "month": 8,
+      "selected": false,
+      "highlight": false,
+      "links": {
+        "github": "soon"
+      },
+      "tabs": ["photos"]
     },
     {
       "id": "texshadow",
@@ -85,10 +87,10 @@
       "id": "creativeinterpolation",
       "title": "Awesome Artistic Creation",
       "venue_type": "conference",
-      "venue": "AAAI",
+      "venue": "SIGGRAPH Asia TCOM",
       "status": "under_review",
-      "year": 2027,
-      "month": 1,
+      "year": 2026,
+      "month": 12,
       "selected": false,
       "highlight": false,
       "links": {},

@@ -123,7 +123,7 @@ def render_links_html(pub):
     return webpage_html, code_html
 
 
-_TRACK_SUFFIXES = {"poster", "posters", "workshop", "workshops", "oral", "spotlight", "demo"}
+_TRACK_SUFFIXES = {"tcom", "poster", "posters", "workshop", "workshops", "oral", "spotlight", "demo"}
 
 def _venue_short(venue):
     words = venue.split()

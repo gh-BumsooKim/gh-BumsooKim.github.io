@@ -42,7 +42,7 @@
     {
       "id": "pixres",
       "image": "asset/images/pixres.png",
-      "title": "Noise Frequencies Let a Pixel-Space Diffusion Prior Detect Native-Resolution Image",
+      "title": "Noise Frequencies Let Pixel-Space Diffusion Priors Detect Native-Resolution Images",
       "authors": [
         {"name": "Bumsoo Kim", "url": "", "is_me": true},
         {"name": "Hyun-Jun Jin"},

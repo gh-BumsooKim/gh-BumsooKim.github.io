@@ -31,12 +31,16 @@
       "tabs": ["sound"]
     },
     {
-      "id": "awesome-acoustic-image",
-      "image": null,
-      "title": "Awesome Acoustic-Image",
-      "status": "ongoing",
-      "year": null,
-      "month": null,
+      "id": "nav_proxy",
+      "image": "asset/images/nav_proxy.png",
+      "title": "Neural Dual-Transport Proxy",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true}
+      ],
+      "venue_type": "conference",
+      "venue": "arXiv",
+      "year": 2026,
+      "month": 9,
       "tabs": ["sound", "rendering"]
     },
     {

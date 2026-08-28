@@ -57,6 +57,7 @@
       "venue_type": "workshop",
       "venue": "ECCV",
       "venue_workshop": {"name": "LoViF Workshop", "url": "https://lovif-eccv2026-workshop.github.io/"},
+      "venue_note": "(Oral)",
       "year": 2026,
       "month": 8,
       "selected": false,

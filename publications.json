@@ -90,16 +90,23 @@
       "tabs": ["3ddata", "artsandgaming"]
     },
     {
-      "id": "creativeinterpolation",
-      "title": "Awesome Artistic Creation",
+      "id": "conventionart",
+      "image": "asset/images/conventionart.png",
+      "title": "Convention-Aware Creative Synthesis via Diffusion for Design Domains",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true},
+        {"name": "Sanghyun Seo"}
+      ],
       "venue_type": "conference",
       "venue": "SIGGRAPH Asia TCOM",
-      "status": "under_review",
       "year": 2026,
-      "month": 12,
-      "selected": false,
-      "highlight": false,
-      "links": {},
+      "month": 9,
+      "selected": true,
+      "highlight": true,
+      "links": {
+        "pdf": "soon",
+        "github": "soon"
+      },
       "tabs": ["artsandgaming", "photos"]
     },
     {

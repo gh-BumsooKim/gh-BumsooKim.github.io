@@ -31,6 +31,16 @@
       "tabs": ["sound"]
     },
     {
+      "id": "impact_mat",
+      "image": "asset/images/impactmat.png",
+      "title": "Impact Material Estimation",
+      "venue_type": "conference",
+      "venue": "arXiv",
+      "year": 2026,
+      "month": 9,
+      "tabs": ["sound", "3ddata","rendering"]
+    },
+    {
       "id": "nav_proxy",
       "image": "asset/images/nav_proxy.png",
       "title": "Neural Dual-Transport Proxy",
@@ -239,7 +249,7 @@
       "venue": "WACV",
       "year": 2025,
       "month": 1,
-      "selected": true,
+      "selected": false,
       "highlight": false,
       "links": {
         "project": "https://gh-bumsookim.github.io/Cartoon-Hallucinations-Detection/",

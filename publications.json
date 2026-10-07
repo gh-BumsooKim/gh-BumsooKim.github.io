@@ -33,12 +33,21 @@
     {
       "id": "impact_mat",
       "image": "asset/images/impactmat.png",
-      "title": "Impact Material Estimation",
+      "title": "ImpactMat: Continuous Material Estimation for Inverse Impact Sound Rendering",
+      "authors": [
+        {"name": "Hyebin Cho", "equal": true}, 
+        {"name": "Bumsoo Kim", "url": "", "equal": true, "is_me": true},
+        {"name": "Joon Son Chung"}
+      ],
       "venue_type": "conference",
       "venue": "arXiv",
       "year": 2026,
       "month": 9,
-      "tabs": ["sound", "3ddata","rendering"]
+      "tabs": ["sound", "3ddata", "rendering"],
+      "links": {
+        "project": "https://material-from-impact.github.io/material-from-impact/",
+        "pdf": "https://arxiv.org/abs/2610.07061"
+      }
     },
     {
       "id": "nav_proxy",
@@ -50,7 +59,7 @@
       "venue_type": "conference",
       "venue": "arXiv",
       "year": 2026,
-      "month": 9,
+      "month": 10,
       "tabs": ["sound", "rendering"]
     },
     {

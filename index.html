@@ -142,6 +142,123 @@ $(document).ready(function() {
         linear-gradient(to bottom right, #d1e1fd, #ffffff);
     box-shadow: 0 1px 6px rgba(0,76,151,0.12);
 }
+/* ===== Collaborator filter ===== */
+.collab {
+    cursor: pointer;
+    border-bottom: 1px dotted #aaa;
+    transition: color .2s, border-color .2s;
+}
+.collab:hover, .collab:focus-visible { color: #2a449a; border-bottom-color: #2a449a; outline: none; }
+.collab.active { color: #2a449a; border-bottom: 1px solid #2a449a; }
+.collab.collab-none { cursor: default; border-bottom: none; color: #aaa; }
+.collab.collab-none:hover { color: #aaa; }
+.collab-filter { display: none; margin-top: 10px; }
+.collab-filter .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 6px 4px 12px;
+    font-size: 0.85em;
+    color: #2a449a;
+    background: #e8eefb;
+    border-radius: 14px;
+}
+.collab-filter .chip button {
+    border: 0;
+    background: transparent;
+    color: #2a449a;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+.collab-filter .chip button:hover { background: #cfdbf6; }
+.pub-card.pub-hidden { display: none; }
+.pub-fade { animation: pubFadeIn .5s ease both; }
+@keyframes pubFadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* Category tabs: swap instantly and fade in with the same animation as the collaborator filter */
+#research-section .tab-content > .tab-pane { transition: none; }
+#research-section .tab-content > .tab-pane.active { animation: pubFadeIn .5s ease both; }
+.pub-empty { color: #888; font-size: 0.9em; padding: 12px 4px; }
+@media (prefers-reduced-motion: reduce) {
+    .pub-fade, #research-section .tab-content > .tab-pane.active { animation: none; }
+}
+/* ===== Presentation map: photo preview that grows on hover ===== */
+.conf-thumb {
+    position: absolute;
+    box-sizing: border-box;
+    width: 34px;
+    padding: 2px;
+    background: rgba(20,26,50,0.93);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.4;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    pointer-events: none;      /* hover is handled by .conf-thumb-hit so the card moving away cannot cancel it */
+    z-index: 5;
+    /* Resting spot: the edge facing the pin is anchored (see layout()), so growing never sweeps over the pin */
+    transform: translate(var(--stx, -50%), var(--sty, -50%));
+    /* z-index drops only after the shrink finishes, so the closing card stays on top of the others */
+    transition: width .22s ease, padding .22s ease, transform .22s ease, box-shadow .22s ease, opacity .2s ease, z-index 0s linear .22s;
+}
+.conf-thumb-hit {
+    position: absolute;
+    width: 34px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 6;
+    transform: translate(calc(-50% + var(--ox, 0px)), calc(-50% + var(--oy, 0px)));
+}
+.conf-thumb img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; }
+.conf-thumb .cap { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .22s ease, opacity .22s ease, margin .22s ease; }
+.conf-thumb.open {
+    width: 170px;
+    padding: 6px;
+    z-index: 99;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    transform: translate(calc(var(--htx, -50%) + var(--hox, 0px)), calc(var(--hty, -100%) + var(--hoy, -10px)));
+    transition: width .22s ease, padding .22s ease, transform .22s ease, box-shadow .22s ease, opacity .2s ease, z-index 0s;
+}
+.conf-thumb.open .cap { max-height: 50px; opacity: 1; margin-top: 6px; }
+/* Emphasis: coloured frame + arrow pointing at the pin, pulsing pin, everything else dimmed */
+.conf-thumb.open { box-shadow: 0 0 0 2px var(--c, #2a449a), 0 4px 14px rgba(0,0,0,0.3); }
+.conf-thumb.open::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - var(--sx, 0px));
+    margin-left: -8px;
+    border: 8px solid transparent;
+}
+.conf-thumb.open.up::after   { top: 100%;    border-top-color: var(--c, #2a449a); }
+.conf-thumb.open.down::after { bottom: 100%; border-bottom-color: var(--c, #2a449a); }
+.conf-thumb.open.left::after {
+    left: 100%;
+    margin-left: 0;
+    top: calc(var(--va, 50%) - var(--sy, 0px));
+    margin-top: -8px;
+    border-left-color: var(--c, #2a449a);
+}
+.conf-thumb.open.right::after {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    top: calc(var(--va, 50%) - var(--sy, 0px));
+    margin-top: -8px;
+    border-right-color: var(--c, #2a449a);
+}
+.conf-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+g.conf-active .conf-pulse { animation: confPulse 1.2s ease-out infinite; }
+@keyframes confPulse { 0% { transform: scale(.8); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+#conf-map-wrap svg g, #conf-map-wrap svg line { transition: opacity .2s ease; }
+#conf-map-wrap.conf-has-open svg g:not(.conf-active),
+#conf-map-wrap.conf-has-open svg line,
+#conf-map-wrap.conf-has-open .conf-thumb:not(.open) { opacity: .25; }
+@media (prefers-reduced-motion: reduce) {
+    .conf-thumb, .conf-thumb .cap { transition: none; }
+    g.conf-active .conf-pulse { animation: none; }
+}
 /* ===== Venue badge above thumbnail ===== */
 .pub-venue-badge {
     display: inline-block;
@@ -211,7 +328,7 @@ Local Time (GMT+09:00)<br>
 <div style="color:#888; line-height:1.6;">
     <div style="color:#666; margin-bottom:3px;">Acknowledgements</div>
     <div style="color:#666; margin-bottom:3px; font-size:0.95em;">My collaborators and co-authors!</div>
-    <div style="font-size:0.85em;">Hyun-Jun Jin, Jaehoon Jang, Donggoo Kang (Smilegate) · Hyebin Cho (KAIST) · Luchao Qi (UNC) · YoonJe Kang (CAU) · Abdul Muqeet (Mongeo) · Kyuchul Lee (TwelveLabs)</div>
+    <div style="font-size:0.85em;"><span class="collab" data-name="Hyun-Jun Jin">Hyun-Jun Jin</span>, <span class="collab" data-name="Jaehoon Jang">Jaehoon Jang</span>, <span class="collab" data-name="Donggoo Kang">Donggoo Kang</span> (Smilegate) · <span class="collab" data-name="Hyebin Cho">Hyebin Cho</span> (KAIST) · <span class="collab" data-name="Luchao Qi">Luchao Qi</span> (UNC) · <span class="collab" data-name="YoonJe Kang">YoonJe Kang</span> (CAU) · <span class="collab" data-name="Abdul Muqeet">Abdul Muqeet</span> (Mongeo) · <span class="collab" data-name="Kyuchul Lee">Kyuchul Lee</span> (TwelveLabs)</div>
     <div style="margin-top:8px; font-size:0.85em; color:#aaa;">
         The open source Web com&shy;munity: <a href="https://html5boilerplate.com/" style="color:#aaa;">HTML5 Boiler&shy;plate</a>, <a href="http://johnstonianera.com/building-responsive-layouts-redux/" style="color:#aaa;">Ryan Johnston</a>, <a href="http://jsfiddle.net/joshnh/Drrkb/" style="color:#aaa;">Joshua N. Hibbert</a>, <a href="http://practicaltypography.com/" style="color:#aaa;">Practical&shy;Typo&shy;graphy.com</a>, and <a href="http://www.georgduffner.at/ebgaramond/" style="color:#aaa;">EB Gara&shy;mond</a>.<br>
         Hosted on GitHub Pages using Jekyll &mdash; basic theme by <a href="https://github.com/orderedlist" style="color:#aaa;">orderedlist</a>
@@ -272,7 +389,7 @@ Local Time (GMT+09:00)<br>
 <hr style="margin:14px 0 10px 0;">
 <div style="color:#888; line-height:1.6;">
     <div style="color:#666; margin-bottom:3px;">Acknowledgements</div>
-    <div style="font-size:0.85em;">Hyun-Jun Jin, Jaehoon Jang, Donggoo Kang (Smilegate) · Hyebin Cho (KAIST) · Luchao Qi (UNC) · YoonJe Kang (CAU) · Abdul Muqeet (Mongeo) · Kyuchul Lee (TwelveLabs)</div>
+    <div style="font-size:0.85em;"><span class="collab" data-name="Hyun-Jun Jin">Hyun-Jun Jin</span>, <span class="collab" data-name="Jaehoon Jang">Jaehoon Jang</span>, <span class="collab" data-name="Donggoo Kang">Donggoo Kang</span> (Smilegate) · <span class="collab" data-name="Hyebin Cho">Hyebin Cho</span> (KAIST) · <span class="collab" data-name="Luchao Qi">Luchao Qi</span> (UNC) · <span class="collab" data-name="YoonJe Kang">YoonJe Kang</span> (CAU) · <span class="collab" data-name="Abdul Muqeet">Abdul Muqeet</span> (Mongeo) · <span class="collab" data-name="Kyuchul Lee">Kyuchul Lee</span> (TwelveLabs)</div>
     <div style="margin-top:8px; font-size:0.85em; color:#aaa;">
         The open source Web com&shy;munity: <a href="https://html5boilerplate.com/" style="color:#aaa;">HTML5 Boiler&shy;plate</a>, <a href="http://johnstonianera.com/building-responsive-layouts-redux/" style="color:#aaa;">Ryan Johnston</a>, <a href="http://jsfiddle.net/joshnh/Drrkb/" style="color:#aaa;">Joshua N. Hibbert</a>, <a href="http://practicaltypography.com/" style="color:#aaa;">Practical&shy;Typo&shy;graphy.com</a>, and <a href="http://www.georgduffner.at/ebgaramond/" style="color:#aaa;">EB Gara&shy;mond</a>.<br>
         Hosted on GitHub Pages using Jekyll &mdash; basic theme by <a href="https://github.com/orderedlist" style="color:#aaa;">orderedlist</a>
@@ -317,10 +434,10 @@ Local Time (GMT+09:00)<br>
             <div style="margin:4px 0 16px 0; font-size:0.92em;">
                 <span style="font-weight:700; font-size:0.8em; letter-spacing:0.12em; text-transform:uppercase; color:#2a449a;">&#9656; News</span>
                 <div style="margin-top:5px; line-height:1.85; color:#333;">
-                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Oct</span><img src="asset/images/arxiv-logo.svg" height="18" alt="arXiv" style="flex-shrink:0; vertical-align:middle;"><span>Paper posted on <strong>arXiv</strong> &mdash; <em>ImpactMat</em></span></div>
-                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Sep</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f2-1f1fe.svg" width="18" height="18" alt="MYS" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>SIGGRAPH Asia 2026</strong> TCOM &mdash; <em>ConvArt</em></span></div>
-                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Aug</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f8-1f1ea.svg" width="18" height="18" alt="Sweden" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>ECCV 2026</strong> LoViF Workshop (Oral)&mdash; <em>PixRes</em></span></div>
-                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Jun</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1f8.svg" width="18" height="18" alt="USA" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>SIGGRAPH 2026</strong> Poster &mdash; <em>Tex-Shadow</em></span></div>
+                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Oct</span><img src="asset/images/arxiv-logo.svg" height="18" alt="arXiv" style="flex-shrink:0; vertical-align:middle;"><span>Paper posted on <strong>arXiv</strong> &mdash; <em>ImpactMat</em> <span style="color:#aaa; font-size:0.82em;">(co 1st-author)</span></span></div>
+                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Sep</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f2-1f1fe.svg" width="18" height="18" alt="MYS" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>SIGGRAPH Asia 2026</strong> TCOM &mdash; <em>ConvArt</em> <span style="color:#aaa; font-size:0.82em;">(1st-author)</span></span></div>
+                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Aug</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f8-1f1ea.svg" width="18" height="18" alt="Sweden" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>ECCV 2026</strong> LoViF Workshop (Oral) &mdash; <em>PixRes</em> <span style="color:#aaa; font-size:0.82em;">(1st-author)</span></span></div>
+                    <div style="display:flex; align-items:center; gap:6px;"><span style="color:#aaa; min-width:86px; flex-shrink:0; font-variant-numeric:tabular-nums;">2026 · Jun</span><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1f8.svg" width="18" height="18" alt="USA" style="flex-shrink:0; vertical-align:middle;"><span>Paper accepted at <strong>SIGGRAPH 2026</strong> Poster &mdash; <em>Tex-Shadow</em> <span style="color:#aaa; font-size:0.82em;">(1st-author)</span></span></div>
                 </div>
             </div>
             <br>
@@ -348,6 +465,8 @@ Local Time (GMT+09:00)<br>
                 </ul>
                 </div>
 
+                <div id="collab-filter" class="collab-filter" aria-live="polite"></div>
+
                 <!-- Tabs -->
                 <br>
                 <div class="tab-content">
@@ -363,7 +482,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubtitle">Convention-Aware Creative Synthesis via Diffusion for Design Domains</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
         <div class="pubvenueyear">SIGGRAPH Asia TCOM, 2026</div>
-        <div class="pubwebpage"><a>PDF (Soon)</a></div>
+        <div class="pubwebpage"><a target="_blank" href="https://bumsookim00.com/ConvArt/">Project webpage</a></div>
         <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
@@ -456,7 +575,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubauthors">Hyebin Cho*, <a target="_blank" href="">Bumsoo Kim</a>*, Joon Son Chung</div>
         <div class="pubvenueyear">arXiv, 2026</div>
         <div class="pubwebpage"><a target="_blank" href="https://material-from-impact.github.io/material-from-impact/">Project webpage</a> | <a href="https://arxiv.org/abs/2610.07061">PDF</a></div>
-        <div class="pubcode"></div>
+        <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
 </div>
@@ -467,7 +586,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubtitle">Convention-Aware Creative Synthesis via Diffusion for Design Domains</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
         <div class="pubvenueyear">SIGGRAPH Asia TCOM, 2026</div>
-        <div class="pubwebpage"><a>PDF (Soon)</a></div>
+        <div class="pubwebpage"><a target="_blank" href="https://bumsookim00.com/ConvArt/">Project webpage</a></div>
         <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
@@ -573,7 +692,7 @@ Local Time (GMT+09:00)<br>
     <img src="asset/images/styletransfer.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN</div>
-        <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Younghoon Jung, Youngsup Park, Sanghyun Seo</div>
+        <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Yonghoon Jung, Youngsup Park, Sanghyun Seo</div>
         <div class="pubvenueyear">CMES (Q2), 2024</div>
         <div class="pubwebpage"><a href="https://www.researchgate.net/profile/Bumsoo-Kim-11/publication/385019453_Explicitly_Color-Inspired_Neural_Style_Transfer_Using_Patchified_AdaIN/links/6717cc5fd796f96b8ecc41e7/Explicitly-Color-Inspired-Neural-Style-Transfer-Using-Patchified-AdaIN.pdf">PDF</a></div>
         <div class="pubcode"></div>
@@ -651,9 +770,32 @@ Local Time (GMT+09:00)<br>
 <div class="pub-card">
     <div class="pubimgmedia"><img width="120px"></div>
     <div class="pub-info">
+        <div class="pubtitle">Awesome 3D Generation</div> (TBD)
+        <div class="pubauthors"></div>
+        <div class="pubvenueyear"></div>
+        <div class="pubwebpage"></div>
+        <div class="pubcode"></div>
+        <div class="pubnote"></div>
+    </div>
+</div>
+<div class="pub-card">
+    <div class="pubimgmedia"><img width="120px"></div>
+    <div class="pub-info">
         <div class="pubtitle">Awesome 3D Motion</div> (TBD)
         <div class="pubauthors"></div>
         <div class="pubvenueyear"></div>
+        <div class="pubwebpage"></div>
+        <div class="pubcode"></div>
+        <div class="pubnote"></div>
+    </div>
+</div>
+<div class="pub-card">
+    <div class="pubimgmedia"><div class="pub-venue-badge">arXiv 2026</div>
+    <img src="asset/images/nav_proxy.png" width="120px"></div>
+    <div class="pub-info">
+        <div class="pubtitle">Neural Dual-Transport Proxy</div>
+        <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a></div>
+        <div class="pubvenueyear">arXiv, 2026</div>
         <div class="pubwebpage"></div>
         <div class="pubcode"></div>
         <div class="pubnote"></div>
@@ -667,7 +809,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubauthors">Hyebin Cho*, <a target="_blank" href="">Bumsoo Kim</a>*, Joon Son Chung</div>
         <div class="pubvenueyear">arXiv, 2026</div>
         <div class="pubwebpage"><a target="_blank" href="https://material-from-impact.github.io/material-from-impact/">Project webpage</a> | <a href="https://arxiv.org/abs/2610.07061">PDF</a></div>
-        <div class="pubcode"></div>
+        <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
 </div>
@@ -734,7 +876,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubtitle">Convention-Aware Creative Synthesis via Diffusion for Design Domains</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
         <div class="pubvenueyear">SIGGRAPH Asia TCOM, 2026</div>
-        <div class="pubwebpage"><a>PDF (Soon)</a></div>
+        <div class="pubwebpage"><a target="_blank" href="https://bumsookim00.com/ConvArt/">Project webpage</a></div>
         <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
@@ -826,7 +968,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubauthors">Hyebin Cho*, <a target="_blank" href="">Bumsoo Kim</a>*, Joon Son Chung</div>
         <div class="pubvenueyear">arXiv, 2026</div>
         <div class="pubwebpage"><a target="_blank" href="https://material-from-impact.github.io/material-from-impact/">Project webpage</a> | <a href="https://arxiv.org/abs/2610.07061">PDF</a></div>
-        <div class="pubcode"></div>
+        <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
 </div>
@@ -857,7 +999,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubtitle">Convention-Aware Creative Synthesis via Diffusion for Design Domains</div>
         <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Sanghyun Seo</div>
         <div class="pubvenueyear">SIGGRAPH Asia TCOM, 2026</div>
-        <div class="pubwebpage"><a>PDF (Soon)</a></div>
+        <div class="pubwebpage"><a target="_blank" href="https://bumsookim00.com/ConvArt/">Project webpage</a></div>
         <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
@@ -915,7 +1057,7 @@ Local Time (GMT+09:00)<br>
     <img src="asset/images/styletransfer.png" width="120px"></div>
     <div class="pub-info">
         <div class="pubtitle">Explicitly Color-Inspired Neural Style Transfer Using Patchified AdaIN</div>
-        <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Younghoon Jung, Youngsup Park, Sanghyun Seo</div>
+        <div class="pubauthors"><a target="_blank" href="">Bumsoo Kim</a>, Wonseop Shin, Yonghoon Jung, Youngsup Park, Sanghyun Seo</div>
         <div class="pubvenueyear">CMES (Q2), 2024</div>
         <div class="pubwebpage"><a href="https://www.researchgate.net/profile/Bumsoo-Kim-11/publication/385019453_Explicitly_Color-Inspired_Neural_Style_Transfer_Using_Patchified_AdaIN/links/6717cc5fd796f96b8ecc41e7/Explicitly-Color-Inspired-Neural-Style-Transfer-Using-Patchified-AdaIN.pdf">PDF</a></div>
         <div class="pubcode"></div>
@@ -1006,7 +1148,7 @@ Local Time (GMT+09:00)<br>
         <div class="pubauthors">Hyebin Cho*, <a target="_blank" href="">Bumsoo Kim</a>*, Joon Son Chung</div>
         <div class="pubvenueyear">arXiv, 2026</div>
         <div class="pubwebpage"><a target="_blank" href="https://material-from-impact.github.io/material-from-impact/">Project webpage</a> | <a href="https://arxiv.org/abs/2610.07061">PDF</a></div>
-        <div class="pubcode"></div>
+        <div class="pubcode"><a target="_blank"><img src="asset/images/github-mark.svg" height="15em">&nbsp;Code (Soon)</a></div>
         <div class="pubnote"></div>
     </div>
 </div>
@@ -1032,9 +1174,10 @@ Local Time (GMT+09:00)<br>
         <script>
 (function(){
   const PUBS=[
+    {venue:"SIGGRAPH",year:2027,status:"under_review"},
     {venue:"CVPR",year:2027,status:"under_review"},
     {venue:"ICASSP",year:2027,status:"under_review"},
-    {title:"ConvArt", venue:"SIGGRAPH Asia",year:2026,workshop:"TCOM"},
+    {title:"ConvArt", venue:"SIGGRAPH Asia",year:2026,workshop:"TCOM",link:"https://bumsookim00.com/ConvArt/"},
     {title:"PixRes", venue:"ECCV",year:2026,highlight:true,workshop:"LoViF Workshop",link:"https://bumsookim00.com/PixRes/"},
     {title:"Tex-Shadow",venue:"SIGGRAPH",year:2026,workshop:"Poster",link:"https://gh-bumsookim.github.io/Tex-Shadow/"},
     {title:"Sounds That Shape",venue:"ICASSP",year:2026,link:"https://gh-bumsookim.github.io/SoundsThatShape/"},
@@ -1056,9 +1199,12 @@ Local Time (GMT+09:00)<br>
     return e;
   }
 
+  // Timeline <-> map sync: both widgets broadcast hover as a "pubfocus" event keyed by "<venue>_<year>".
+  const emitFocus=(key,on)=>window.dispatchEvent(new CustomEvent("pubfocus",{detail:{key,on,source:"timeline"}}));
+
   function addHover(c,pub){
     const isUR=pub.status==="under_review";
-    c.addEventListener("mouseenter",()=>{
+    const show=()=>{
       let html;
       if(isUR){
         html=`<div style="font-weight:700;margin-bottom:2px;opacity:.6">[Under Review]</div>`;
@@ -1080,9 +1226,12 @@ Local Time (GMT+09:00)<br>
       tip.style.left=tx+"px";
       tip.style.top=ty+"px";
       requestAnimationFrame(()=>tip.style.opacity="1");
-    });
-    c.addEventListener("mouseleave",()=>tip.style.opacity="0");
+    };
+    const hide=()=>tip.style.opacity="0";
+    c.addEventListener("mouseenter",show);
+    c.addEventListener("mouseleave",hide);
     if(!isUR&&pub.link)c.addEventListener("click",()=>window.open(pub.link,"_blank"));
+    return {show,hide};
   }
 
   function render(){
@@ -1165,7 +1314,7 @@ Local Time (GMT+09:00)<br>
                 fill:"url(#ur-grad)",style:"cursor:default"})
             : mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,
                 fill:"#2a449a",style:"cursor:pointer"});
-          addHover(cell,pub);
+          const tipApi=addHover(cell,pub);
           svg.appendChild(cell);
           if(!isUR&&pub.highlight){
             svg.appendChild(mk("rect",{x:cx-R-4,y:cy-R-4,width:(R+4)*2,height:(R+4)*2,
@@ -1186,7 +1335,7 @@ Local Time (GMT+09:00)<br>
               style:"pointer-events:none"});
             cloneRing.setAttribute("display","none");
           }
-          pubEntries.push({cell,clone,cloneRing,xi});
+          pubEntries.push({cell,clone,cloneRing,xi,tipApi,key:`${venue}_${year}`});
         }else{
           const cell=mk("rect",{x:cx-R,y:cy-R,width:R*2,height:R*2,rx:4,fill:"#dce4f0"});
           svg.appendChild(cell);
@@ -1211,25 +1360,267 @@ Local Time (GMT+09:00)<br>
 
     // Focus: show fog + clone on enter, hide on leave — no DOM movement
     let fogTimer;
-    pubEntries.forEach(({cell,clone,cloneRing,xi})=>{
-      cell.addEventListener("mouseenter",()=>{
-        clearTimeout(fogTimer);
-        fog.style.opacity="0.62";
-        clone.removeAttribute("display");
-        if(cloneRing)cloneRing.removeAttribute("display");
-        showCol(xi);
-      });
-      cell.addEventListener("mouseleave",()=>{
-        fogTimer=setTimeout(()=>fog.style.opacity="0",40);
-        clone.setAttribute("display","none");
-        if(cloneRing)cloneRing.setAttribute("display","none");
-        hideCol(xi);
-      });
+    function focusOn({clone,cloneRing,xi}){
+      clearTimeout(fogTimer);
+      fog.style.opacity="0.62";
+      clone.removeAttribute("display");
+      if(cloneRing)cloneRing.removeAttribute("display");
+      showCol(xi);
+    }
+    function focusOff({clone,cloneRing,xi}){
+      fogTimer=setTimeout(()=>fog.style.opacity="0",40);
+      clone.setAttribute("display","none");
+      if(cloneRing)cloneRing.setAttribute("display","none");
+      hideCol(xi);
+    }
+    pubEntries.forEach(e=>{
+      e.cell.addEventListener("mouseenter",()=>{focusOn(e);emitFocus(e.key,true);});
+      e.cell.addEventListener("mouseleave",()=>{focusOff(e);emitFocus(e.key,false);});
+    });
+    // Hover coming from the map: highlight the same box (and its tooltip)
+    window.addEventListener("pubfocus",ev=>{
+      const {key,on,source}=ev.detail;
+      if(source==="timeline")return;
+      const e=pubEntries.find(x=>x.key===key);
+      if(!e)return;
+      if(on){focusOn(e);e.tipApi.show();}
+      else{focusOff(e);e.tipApi.hide();}
     });
   }
 
   render();
   $(document).on("shown.bs.tab",'a[href="#me"]',render);
+})();
+        </script>
+        <h4>Presentation Map</h4>
+        <div id="conf-map-wrap" style="position:relative;margin:8px 0 6px;">
+          <svg id="conf-map" viewBox="0 0 1000 389" style="display:block;width:100%;height:auto;background:#f4f6fb;border:1px solid #e0e5ef;"></svg>
+          <div id="conf-map-tip" style="opacity:0;transition:opacity 0.18s ease;position:absolute;left:0;top:0;width:170px;background:rgba(20,26,50,0.93);color:#fff;font-size:13px;padding:6px;border-radius:6px;pointer-events:none;line-height:1.4;z-index:99;"></div>
+        </div>
+        <div style="color:#aaa;font-size:0.85em;margin-bottom:20px;">
+          <span style="color:#2a449a;">&#9679;</span> Attended &nbsp;
+          <span style="color:#e07a1f;">&#9679;</span> Accepted, upcoming &nbsp;&middot;&nbsp; Hover a pin or photo to enlarge.
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+        <script>
+(function(){
+  const PLACES=[
+    {key:"NeurIPS_2023", venue:"NeurIPS 2023",       city:"New Orleans, USA", lat:29.95,lon:-90.07, img:"asset/images/neurips2023.jpg", off:[0,41], dir:"down"},
+    {key:"CVPR_2024", venue:"CVPR 2024",          city:"Seattle, USA",     lat:47.61,lon:-122.33,img:"asset/images/cvpr2024.jpg", off:[-46,0], dir:"left", va:0.78},
+    {key:"AAAI_2025", venue:"AAAI 2025",          city:"Philadelphia, USA",lat:39.95,lon:-75.17, img:"asset/images/aaai2025.jpg", off:[46,0], dir:"right"},
+    {key:"WACV_2025", venue:"WACV 2025",          city:"Tucson, USA",      lat:32.22,lon:-110.97,img:"asset/images/wacv2025.jpg", off:[0,41], dir:"down"},
+    {venue:"ISMAR 2025",         city:"Daejeon, Korea",   lat:36.35,lon:127.38, img:"asset/images/ismar2025.jpg", off:[0,-41], dir:"up"},
+    {venue:"SIGGRAPH Asia 2025", city:"Hong Kong",        lat:22.32,lon:114.17, img:"asset/images/sigasia2025.jpg", off:[0,41], dir:"down"},
+    {key:"ICASSP_2026", venue:"ICASSP 2026",        city:"Barcelona, Spain", lat:41.39,lon:2.17,   img:"asset/images/icassp2026.jpg", off:[0,41], dir:"down"},
+    {key:"SIGGRAPH_2026", venue:"SIGGRAPH 2026",      city:"Los Angeles, USA", lat:34.05,lon:-118.24,img:"asset/images/sig2026.jpg", off:[-46,0], dir:"left"},
+    // No photo: omit `img` (popup shows text only). `upcoming` marks a future trip (orange).
+    {key:"ECCV_2026", venue:"ECCV 2026",          city:"Malmö, Sweden",    lat:55.60,lon:13.00,  note:"PixRes · LoViF Workshop"},
+    {key:"SIGGRAPH Asia_2026", venue:"SIGGRAPH Asia 2026", city:"Kuala Lumpur, Malaysia",lat:3.14,lon:101.69, upcoming:true, note:"ConvArt · TCOM"},
+  ];
+  const COLOR_DONE="#2a449a", COLOR_UPCOMING="#e07a1f";
+  const NS="http://www.w3.org/2000/svg";
+  const W=1000, LAT_TOP=83, K=W/360;          // equirectangular, 1 degree = K px both ways
+  const svg=document.getElementById("conf-map");
+  const wrap=document.getElementById("conf-map-wrap");
+  const tip=document.getElementById("conf-map-tip");
+  if(!svg||!wrap||!tip)return;
+
+  const proj=(lon,lat)=>[(lon+180)*K,(LAT_TOP-lat)*K];
+  function mk(tag,a){
+    const e=document.createElementNS(NS,tag);
+    Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));
+    return e;
+  }
+
+  // Land from Natural Earth (world-atlas); the pins still render if the CDN is unreachable.
+  if(window.topojson){
+    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json")
+      .then(r=>r.json())
+      .then(topo=>{
+        const fc=topojson.feature(topo,topo.objects.land);
+        const geoms=(fc.features||[fc]).map(f=>f.geometry||f);
+        let d="";
+        geoms.forEach(g=>{
+          const polys=g.type==="Polygon"?[g.coordinates]:g.coordinates;
+          polys.forEach(poly=>poly.forEach(ring=>{
+            d+="M"+ring.map(([lo,la])=>proj(lo,la).map(v=>v.toFixed(1)).join(",")).join("L")+"Z";
+          }));
+        });
+        svg.insertBefore(mk("path",{d,fill:"#d5dbe8",stroke:"#fff","stroke-width":"0.6","stroke-linejoin":"round"}),svg.firstChild);
+      })
+      .catch(()=>{});
+  }
+
+  const H=(LAT_TOP+57)*K;                     // map height in viewBox units (lat 83 .. -57)
+  const thumbs=[];
+  function layout(){                          // along-direction distances are in viewBox units; convert to px for the current width
+    const k=wrap.clientWidth/W;
+    const HW=17, HH=13.25;                    // half width / height of the resting preview
+    thumbs.forEach(({el,off,dir,va,line,x,y,hit})=>{
+      // The cross axis is not free: the pin must sit at the same relative spot on the preview and on the open card
+      // (horizontally centred for up/down, at `va` of the height for left/right), so the arrow aims at the pin all along.
+      const sideways=dir==="left"||dir==="right";
+      const ox=sideways?off[0]*k:0;
+      const oy=sideways?(0.5-va)*2*HH:off[1]*k;
+      el.style.setProperty("--ox",ox+"px");
+      el.style.setProperty("--oy",oy+"px");
+      if(line){line.setAttribute("x2",x+ox/k);line.setAttribute("y2",y+oy/k);}
+      if(hit)return;
+      // Anchor the edge that faces the pin, so growing never sweeps over it.
+      let tx="calc(-50% + 0px)", ty=`calc(${-va*100}% + 0px)`;
+      if(dir==="down")       {tx="calc(-50% + 0px)"; ty=`calc(0% + ${oy-HH}px)`;}
+      else if(dir==="up")    {tx="calc(-50% + 0px)"; ty=`calc(-100% + ${oy+HH}px)`;}
+      else if(dir==="right") tx=`calc(0% + ${ox-HW}px)`;
+      else if(dir==="left")  tx=`calc(-100% + ${ox+HW}px)`;
+      el.style.setProperty("--stx",tx);
+      el.style.setProperty("--sty",ty);
+    });
+  }
+
+  // Sync with the Publication Timeline (see emitFocus there). Places without a timeline box have no `key`.
+  const registry={};
+  const emit=(p,on)=>{if(p.key)window.dispatchEvent(new CustomEvent("pubfocus",{detail:{key:p.key,on,source:"map"}}));};
+  window.addEventListener("pubfocus",ev=>{
+    const {key,on,source}=ev.detail;
+    if(source==="map")return;
+    const r=registry[key];
+    if(r)on?r.open():r.close();
+  });
+
+  // Mark one pin as the focus: pulse it, dim the rest.
+  function setActive(g,on){
+    g.classList.toggle("conf-active",on);
+    wrap.classList.toggle("conf-has-open",!!wrap.querySelector("g.conf-active"));
+  }
+
+  PLACES.forEach(p=>{
+    const color=p.upcoming?COLOR_UPCOMING:COLOR_DONE;
+    const [x,y]=proj(p.lon,p.lat);
+    const g=mk("g",{tabindex:"0","aria-label":p.venue+", "+p.city,style:"cursor:pointer;outline:none;"});
+    const ring=mk("circle",{cx:x,cy:y,r:10,fill:"none",stroke:color,"stroke-opacity":"0.35","stroke-width":"1.5",...(p.upcoming?{"stroke-dasharray":"3 2"}:{})});
+    const dot=mk("circle",{cx:x,cy:y,r:5.5,fill:color,stroke:"#fff","stroke-width":"1.5",style:"transform-box:fill-box;transform-origin:center;transition:transform .18s ease;"});
+    const pulse=mk("circle",{class:"conf-pulse",cx:x,cy:y,r:10,fill:"none",stroke:color,"stroke-width":"2"});
+    const hit=mk("circle",{cx:x,cy:y,r:9,fill:"transparent"});
+    g.append(ring,pulse,dot,hit);
+    let leaderLine=null;
+    if(p.img){
+      leaderLine=mk("line",{x1:x,y1:y,x2:x,y2:y,stroke:color,"stroke-opacity":"0.4","stroke-width":"1"});
+      svg.appendChild(leaderLine);
+    }
+    svg.appendChild(g);
+
+    // --- Photo pins: a small preview beside the pin that grows into a full card on hover ---
+    if(p.img){
+      const off=p.off||[0,-37];
+      const el=document.createElement("div");
+      el.className="conf-thumb";
+      el.style.setProperty("--c",color);
+      el.style.left=(x/W*100)+"%";
+      el.style.top=(y/H*100)+"%";
+      el.innerHTML=`<img src="${p.img}" alt="${p.venue}" loading="lazy" decoding="async">`+
+        `<div class="cap"><div style="font-weight:700;">${p.venue}</div>`+
+        `<div style="opacity:.75;font-size:12px;">${p.city}</div></div>`;
+      // Stationary hit target at the preview's resting spot; the card itself ignores the pointer.
+      const hitEl=document.createElement("div");
+      hitEl.className="conf-thumb-hit";
+      hitEl.style.left=el.style.left;
+      hitEl.style.top=el.style.top;
+      wrap.append(el,hitEl);
+      const va=p.va===undefined?0.5:p.va;
+      thumbs.push({el,off,dir:p.dir,va,line:leaderLine,x,y},{el:hitEl,off,dir:p.dir,va,line:null,x,y,hit:true});
+
+      let timer;
+      const CARD_W=170, CARD_H=175;
+      function open(){
+        clearTimeout(timer);
+        const br=wrap.getBoundingClientRect();
+        const k=br.width/W;
+        const left=x*k-CARD_W/2;
+        const clamped=Math.max(4,Math.min(left,br.width-CARD_W-4));
+        // distance from pin centre to the card edge: enlarged dot radius + a small gap + the arrow's height
+        const gap=((5.5*1.45+1)*k+5+8);
+        el.classList.remove("up","down","right","left");
+        if(p.dir==="right"||p.dir==="left"){  // beside the pin, vertically centred (clamped inside the map)
+          const side=p.dir==="right"?1:-1;
+          // `va`: where along the card's side the pin sits (0 = top, 1 = bottom). 0.5 = centred; a larger va lifts
+          // the card so it grows diagonally upward. The card may overlap what is around the map.
+          const va=p.va===undefined?0.5:p.va;
+          const topWanted=y*k-va*CARD_H;
+          const topClamped=Math.max(8-br.top,topWanted);
+          el.style.setProperty("--va",(va*100)+"%");
+          let hox=side*gap;
+          // keep the card inside the browser window; the map area itself may be overlapped
+          const edge=br.left+x*k+hox+(side<0?-CARD_W:CARD_W);
+          if(side<0&&edge<8)hox+=8-edge;
+          if(side>0&&edge>window.innerWidth-8)hox-=edge-(window.innerWidth-8);
+          el.style.setProperty("--htx",side>0?"0%":"-100%");
+          el.style.setProperty("--hox",hox+"px");
+          el.style.setProperty("--hty",(-va*100)+"%");
+          el.style.setProperty("--hoy",(topClamped-topWanted)+"px");
+          el.style.setProperty("--sy",(topClamped-topWanted)+"px");
+          el.classList.add("open",p.dir);
+        }else{
+          const up=p.dir==="up"&&br.top+y*k-CARD_H-gap>=8;   // `dir:"up"` flips down if the card would leave the viewport
+          el.style.setProperty("--htx","-50%");
+          el.style.setProperty("--hox",(clamped-left)+"px");
+          el.style.setProperty("--sx",(clamped-left)+"px");
+          el.style.setProperty("--hty",up?"-100%":"0%");
+          el.style.setProperty("--hoy",(up?-gap:gap)+"px");
+          el.classList.add("open",up?"up":"down");
+        }
+        dot.style.transform="scale(1.45)";
+        setActive(g,true);
+      }
+      function close(){
+        timer=setTimeout(()=>{el.classList.remove("open");dot.style.transform="";setActive(g,false);},80);
+      }
+      const onIn=()=>{open();emit(p,true);}, onOut=()=>{close();emit(p,false);};
+      [g,hitEl].forEach(t=>{
+        t.addEventListener("mouseenter",onIn);
+        t.addEventListener("mouseleave",onOut);
+      });
+      g.addEventListener("focus",onIn);
+      g.addEventListener("blur",onOut);
+      if(p.key)registry[p.key]={open,close};
+      return;
+    }
+
+    // --- No photo: plain text popup above the pin ---
+    function show(){
+      tip.innerHTML=(p.upcoming?`<div style="font-size:11px;font-weight:700;letter-spacing:.03em;color:${color};padding:2px 2px 0;">ACCEPTED · UPCOMING</div>`:"")+
+        `<div style="font-weight:700;margin-top:${p.upcoming?2:0}px;padding:0 2px;">${p.venue}</div>`+
+        `<div style="opacity:.75;font-size:12px;padding:0 2px ${p.note?0:2}px;">${p.city}</div>`+
+        (p.note?`<div style="opacity:.75;font-size:12px;padding:0 2px 2px;">${p.note}</div>`:"");
+      dot.style.transform="scale(1.45)";
+      setActive(g,true);
+      tip.style.opacity="0";
+      const br=wrap.getBoundingClientRect();
+      const cr=dot.getBoundingClientRect();
+      const th=tip.offsetHeight, tw=tip.offsetWidth;
+      let tx=cr.left-br.left+cr.width/2-tw/2;
+      tx=Math.max(4,Math.min(tx,br.width-tw-4));
+      let ty=cr.top-br.top-th-10;
+      if(cr.top-th-10<8)ty=cr.bottom-br.top+10;
+      tip.style.left=tx+"px";
+      tip.style.top=ty+"px";
+      requestAnimationFrame(()=>tip.style.opacity="1");
+    }
+    function hide(){
+      dot.style.transform="";
+      setActive(g,false);
+      tip.style.opacity="0";
+    }
+    const onIn=()=>{show();emit(p,true);}, onOut=()=>{hide();emit(p,false);};
+    g.addEventListener("mouseenter",onIn);
+    g.addEventListener("mouseleave",onOut);
+    g.addEventListener("focus",onIn);
+    g.addEventListener("blur",onOut);
+    if(p.key)registry[p.key]={open:show,close:hide};
+  });
+
+  layout();
+  window.addEventListener("resize",layout);
+  $(document).on("shown.bs.tab",'a[href="#me"]',layout);   // width is 0 while the Me tab is hidden
 })();
         </script>
         <h4>Academic lineage</h4>
@@ -1350,4 +1741,111 @@ Local Time (GMT+09:00)<br>
 </div>
 
 </div>
+<script>
+/* Collaborator filter: click a name in the left panel to show only papers co-authored with them. */
+(function () {
+    var sec = document.getElementById('research-section');
+    var bar = document.getElementById('collab-filter');
+    if (!sec || !bar || !window.jQuery) return;
+
+    var cards = [].slice.call(sec.querySelectorAll('.pub-card'));
+    var lists = [].slice.call(sec.querySelectorAll('.pub-list'));
+    var allPane = document.getElementById('pubtabintime');
+    var current = null;
+
+    function hasAuthor(card, name) {
+        var a = card.querySelector('.pubauthors');
+        return !!a && a.textContent.indexOf(name) !== -1;
+    }
+
+    // Restart the fade-in animation on an element.
+    function fadeIn(el) {
+        el.classList.remove('pub-fade');
+        void el.offsetWidth;
+        el.classList.add('pub-fade');
+    }
+
+    function updateEmpty() {
+        lists.forEach(function (list) {
+            var empty = list.querySelector('.pub-empty');
+            var any = [].some.call(list.querySelectorAll('.pub-card'), function (c) {
+                return !c.classList.contains('pub-hidden');
+            });
+            var show = !!current && !any;
+            if (show && !empty) {
+                empty = document.createElement('div');
+                empty.className = 'pub-empty';
+                list.appendChild(empty);
+            }
+            if (empty) {
+                if (show) empty.textContent = 'No papers with ' + current + ' in this category.';
+                empty.style.display = show ? '' : 'none';
+                if (show) fadeIn(empty);
+            }
+        });
+    }
+
+    // paneFaded: the tab switch already faded the pane in, so don't fade the cards a second time.
+    function apply(paneFaded) {
+        cards.forEach(function (c) {
+            var hide = !!current && !hasAuthor(c, current);
+            c.classList.toggle('pub-hidden', hide);
+            if (!hide && !paneFaded && c.offsetParent !== null) fadeIn(c);
+        });
+        updateEmpty();
+        if (current) {
+            var n = countFor(current);
+            bar.innerHTML = '<span class="chip">Papers with <b>' + current + '</b> (' + n +
+                ')<button type="button" aria-label="Clear filter">&#10005;</button></span>';
+            bar.querySelector('button').onclick = function () { select(null); };
+            bar.style.display = 'block';
+            fadeIn(bar);
+        } else {
+            bar.style.display = 'none';
+        }
+    }
+
+    function countFor(name) {
+        return [].filter.call(allPane.querySelectorAll('.pub-card'), function (c) {
+            return hasAuthor(c, name);
+        }).length;
+    }
+
+    function select(name) {
+        current = (name && name !== current) ? name : null;
+        [].forEach.call(document.querySelectorAll('.collab'), function (el) {
+            el.classList.toggle('active', el.getAttribute('data-name') === current);
+        });
+        if (!current) { apply(); return; }
+        var $ = window.jQuery;
+        var needTop = !document.getElementById('research').classList.contains('active');
+        var needAll = !allPane.classList.contains('active');
+        var pending = (needTop ? 1 : 0) + (needAll ? 1 : 0);
+        if (!pending) { apply(); }
+        else {
+            var finish = function () { if (--pending === 0) apply(needAll); };
+            if (needTop) $('#topnav a[href="#research"]').one('shown.bs.tab', finish).tab('show');
+            if (needAll) $('a[href="#pubtabintime"]').one('shown.bs.tab', finish).tab('show');
+        }
+        var top = sec.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.6) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    [].forEach.call(document.querySelectorAll('.collab'), function (el) {
+        var name = el.getAttribute('data-name');
+        if (!countFor(name)) {
+            el.classList.add('collab-none');
+            el.title = 'No papers listed yet';
+            return;
+        }
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.title = countFor(name) + ' paper' + (countFor(name) > 1 ? 's' : '') + ' together';
+        el.addEventListener('click', function () { select(name); });
+        el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(name); }
+        });
+    });
+})();
+</script>
 </body></html>

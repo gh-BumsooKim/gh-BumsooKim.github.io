@@ -13,6 +13,15 @@
       "tabs": ["photos"]
     },
     {
+      "id": "awesome-3d-generation",
+      "image": null,
+      "title": "Awesome 3D Generation",
+      "status": "ongoing",
+      "year": 2026,
+      "month": 11,
+      "tabs": ["3ddata"]
+    },
+    {
       "id": "awesome-3d-motion",
       "image": null,
       "title": "Awesome 3D Motion",
@@ -30,6 +39,20 @@
       "month": null,
       "tabs": ["sound"]
     },
+    
+    {
+      "id": "nav_proxy",
+      "image": "asset/images/nav_proxy.png",
+      "title": "Neural Dual-Transport Proxy",
+      "authors": [
+        {"name": "Bumsoo Kim", "url": "", "is_me": true}
+      ],
+      "venue_type": "conference",
+      "venue": "arXiv",
+      "year": 2026,
+      "month": 10,
+      "tabs": ["sound", "rendering", "3ddata"]
+    },
     {
       "id": "impact_mat",
       "image": "asset/images/impactmat.png",
@@ -46,21 +69,9 @@
       "tabs": ["sound", "3ddata", "rendering"],
       "links": {
         "project": "https://material-from-impact.github.io/material-from-impact/",
-        "pdf": "https://arxiv.org/abs/2610.07061"
+        "pdf": "https://arxiv.org/abs/2610.07061",
+        "github": "soon"
       }
-    },
-    {
-      "id": "nav_proxy",
-      "image": "asset/images/nav_proxy.png",
-      "title": "Neural Dual-Transport Proxy",
-      "authors": [
-        {"name": "Bumsoo Kim", "url": "", "is_me": true}
-      ],
-      "venue_type": "conference",
-      "venue": "arXiv",
-      "year": 2026,
-      "month": 10,
-      "tabs": ["sound", "rendering"]
     },
     {
       "id": "pixres",
@@ -123,7 +134,7 @@
       "selected": true,
       "highlight": true,
       "links": {
-        "pdf": "soon",
+        "project": "https://bumsookim00.com/ConvArt/",
         "github": "soon"
       },
       "tabs": ["artsandgaming", "photos"]
@@ -276,7 +287,7 @@
       "authors": [
         {"name": "Bumsoo Kim", "url": "", "is_me": true},
         {"name": "Wonseop Shin"},
-        {"name": "Younghoon Jung"},
+        {"name": "Yonghoon Jung"},
         {"name": "Youngsup Park"},
         {"name": "Sanghyun Seo"}
       ],

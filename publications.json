@@ -13,15 +13,6 @@
       "tabs": ["photos"]
     },
     {
-      "id": "awesome-3d-generation",
-      "image": null,
-      "title": "Awesome 3D Generation",
-      "status": "ongoing",
-      "year": 2026,
-      "month": 11,
-      "tabs": ["3ddata"]
-    },
-    {
       "id": "awesome-3d-motion",
       "image": null,
       "title": "Awesome 3D Motion",
@@ -39,7 +30,14 @@
       "month": null,
       "tabs": ["sound"]
     },
-    
+    {
+      "id": "awesome-3d-generation",
+      "image": "asset/images/artmesh.gif",
+      "title": "Artist Mesh Generation",
+      "year": 2026,
+      "month": 11,
+      "tabs": ["3ddata"]
+    },
     {
       "id": "nav_proxy",
       "image": "asset/images/nav_proxy.png",

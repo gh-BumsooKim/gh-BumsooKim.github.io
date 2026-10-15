@@ -53,7 +53,7 @@
     },
     {
       "id": "impact_mat",
-      "image": "asset/images/impactmat.png",
+      "image": "asset/images/impactmat.gif",
       "title": "ImpactMat: Continuous Material Estimation for Inverse Impact Sound Rendering",
       "authors": [
         {"name": "Hyebin Cho", "equal": true}, 

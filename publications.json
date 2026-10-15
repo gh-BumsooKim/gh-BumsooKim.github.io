@@ -40,7 +40,7 @@
     },
     {
       "id": "nav_proxy",
-      "image": "asset/images/nav_proxy.png",
+      "image": "asset/images/nav_proxy.gif",
       "title": "Neural Dual-Transport Proxy",
       "authors": [
         {"name": "Bumsoo Kim", "url": "", "is_me": true}
